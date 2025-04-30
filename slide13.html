@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết Quả Sprint Đầu Tiên - Báo Cáo Môn Công Nghệ Phần Mềm</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom right, #f0f9ff, #ffffff);
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            z-index: 0;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+        .title {
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+        .main-content {
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+        .gold-accent {
+            color: #d4af37;
+        }
+        .sprint-result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .result-card {
+            background-color: #f8fafc;
+            border-radius: 10px;
+            padding: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid;
+            height: 100%;
+            opacity: 0;
+            animation: fadeInUp 0.6s forwards;
+        }
+        .completed-card {
+            border-left-color: #22c55e;
+            animation-delay: 0.2s;
+        }
+        .ongoing-card {
+            border-left-color: #f59e0b;
+            animation-delay: 0.4s;
+        }
+        .metrics-card {
+            border-left-color: #3b82f6;
+            animation-delay: 0.6s;
+            grid-column: span 2;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .icon-completed {
+            background: linear-gradient(135deg, #065f46, #22c55e);
+        }
+        .icon-ongoing {
+            background: linear-gradient(135deg, #b45309, #f59e0b);
+        }
+        .icon-metrics {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+        }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .task-list {
+            margin-top: 0.5rem;
+        }
+        .task-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .task-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .task-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+        .ba-icon {
+            background: linear-gradient(135deg, #7e22ce, #a855f7);
+        }
+        .backend-icon {
+            background: linear-gradient(135deg, #065f46, #10b981);
+        }
+        .frontend-icon {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+        }
+        .tester-icon {
+            background: linear-gradient(135deg, #b91c1c, #ef4444);
+        }
+        .pm-icon {
+            background: linear-gradient(135deg, #b45309, #f59e0b);
+        }
+        .metrics-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 1rem;
+        }
+        .metrics-left {
+            width: 30%;
+        }
+        .metric-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .metric-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .metric-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+        .velocity-icon {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+        }
+        .coverage-icon {
+            background: linear-gradient(135deg, #b45309, #f59e0b);
+        }
+        .burndown-icon {
+            background: linear-gradient(135deg, #0369a1, #0ea5e9);
+        }
+        .metrics-right {
+            width: 68%;
+            background-color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .chart-container {
+            height: 220px;
+            position: relative;
+        }
+        .metric-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #1e3a8a;
+            margin-left: auto;
+            padding: 0.25rem 0.75rem;
+            background-color: #f0f9ff;
+            border-radius: 20px;
+            border: 1px solid #e0f2fe;
+        }
+        .decorative-element {
+            position: absolute;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        .page-number {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #666;
+            padding: 5px 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+        }
+        .hotel-logo {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            font-size: 24px;
+            color: #1e3a8a;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-bg"></div>
+        
+        <!-- Decorative elements -->
+        <i class="fas fa-chart-line decorative-element text-9xl" style="top: 40%; left: 5%;"></i>
+        <i class="fas fa-check-circle decorative-element text-9xl" style="bottom: 15%; right: 8%;"></i>
+        
+        <div class="content">
+            <div class="title">
+                <h1 class="text-3xl font-bold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">KẾT QUẢ SPRINT ĐẦU TIÊN</h1>
+            </div>
+            
+            <div class="main-content">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-800" style="border-bottom: 2px solid #d4af37; padding-bottom: 0.5rem;">
+                    <i class="fas fa-flag-checkered mr-2 gold-accent"></i>
+                    Sản phẩm sau Sprint 1
+                </h2>
+                
+                <div class="sprint-result-grid">
+                    <!-- Completed Tasks -->
+                    <div class="result-card completed-card">
+                        <div class="card-header">
+                            <div class="card-icon icon-completed">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <h3 class="card-title">Đã hoàn thành</h3>
+                        </div>
+                        
+                        <div class="task-list">
+                            <div class="task-item">
+                                <div class="task-icon ba-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium">BA</div>
+                                    <div class="text-gray-600 text-sm">Hoàn tất phân tích chi tiết các user story ưu tiên cao</div>
+                                </div>
+                            </div>
+                            
+                            <div class="task-item">
+                                <div class="task-icon backend-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium">Backend Dev</div>
+                                    <div class="text-gray-600 text-sm">Thiết lập cấu trúc dữ liệu và API cơ bản cho đặt phòng</div>
+                                </div>
+                            </div>
+                            
+                            <div class="task-item">
+                                <div class="task-icon frontend-icon">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium">Frontend Dev</div>
+                                    <div class="text-gray-600 text-sm">Giao diện quản lý trạng thái phòng</div>
+                                </div>
+                            </div>
+                            
+                            <div class="task-item">
+                                <div class="task-icon tester-icon">
+                                    <i class="fas fa-vial"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium">Tester</div>
+                                    <div class="text-gray-600 text-sm">Test case cho các tính năng cốt lõi</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ongoing Tasks -->
+                    <div class="result-card ongoing-card">
+                        <div class="card-header">
+                            <div class="card-icon icon-ongoing">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h3 class="card-title">Đang tiến hành</h3>
+                        </div>
+                        
+                        <div class="task-list">
+                            <div class="task-item">
+                                <div class="task-icon backend-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium">Backend Dev</div>
+                                    <div class="text-gray-600 text-sm">Tích hợp hệ thống thanh toán</div>
+                                </div>
+                            </div>
+                            
+                            <div class="task-item">
+                                <div class="task-icon frontend-icon">
+                                    <i class="fas fa-paint-brush"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium">Frontend Dev</div>
+                                    <div class="text-gray-600 text-sm">Hoàn thiện giao diện người dùng</div>
+                                </div>
+                            </div>
+                            
+                            <div class="task-item">
+                                <div class="task-icon pm-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium">PM</div>
+                                    <div class="text-gray-600 text-sm">Làm việc với các bên liên quan để chuẩn bị cho Sprint 2</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Metrics -->
+                    <div class="result-card metrics-card">
+                        <div class="card-header">
+                            <div class="card-icon icon-metrics">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3 class="card-title">Metrics</h3>
+                        </div>
+                        
+                        <div class="metrics-container">
+                            <div class="metrics-left">
+                                <div class="metric-item">
+                                    <div class="metric-icon velocity-icon">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                    </div>
+                                    <div class="font-medium">Velocity</div>
+                                    <div class="metric-value">35 points</div>
+                                </div>
+                                
+                                <div class="metric-item">
+                                    <div class="metric-icon burndown-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="font-medium">Burndown Chart</div>
+                                    <div class="metric-value text-green-600">On Track</div>
+                                </div>
+                                
+                                <div class="metric-item">
+                                    <div class="metric-icon coverage-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div class="font-medium">Test Coverage</div>
+                                    <div class="metric-value">95%</div>
+                                </div>
+                            </div>
+                            
+                            <div class="metrics-right">
+                                <h4 class="text-center text-blue-800 font-medium mb-2">Burndown Chart Sprint 1</h4>
+                                <div class="chart-container">
+                                    <canvas id="burndownChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hotel-logo">
+                <i class="fas fa-hotel gold-accent"></i> <span class="text-blue-800 font-semibold">HMS</span>
+            </div>
+            
+            <div class="page-number">13/16</div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('burndownChart').getContext('2d');
+            
+            // Burndown chart data
+            const burndownChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+                    datasets: [
+                        {
+                            label: 'Ideal Burndown',
+                            data: [35, 30, 25, 20, 15, 10, 0],
+                            borderColor: 'rgba(203, 213, 225, 0.8)',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            pointRadius: 0,
+                            fill: false,
+                            tension: 0
+                        },
+                        {
+                            label: 'Actual Burndown',
+                            data: [35, 32, 28, 22, 16, 8, 3],
+                            borderColor: 'rgba(59, 130, 246, 0.8)',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            borderWidth: 3,
+                            pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            fill: true,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 10,
+                                font: {
+                                    family: 'Montserrat',
+                                    size: 11
+                                }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(30, 58, 138, 0.8)',
+                            titleFont: {
+                                family: 'Montserrat',
+                                size: 13
+                            },
+                            bodyFont: {
+                                family: 'Montserrat',
+                                size: 12
+                            },
+                            padding: 10
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Story Points Remaining',
+                                font: {
+                                    family: 'Montserrat',
+                                    size: 12
+                                }
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Montserrat',
+                                    size: 11
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(226, 232, 240, 0.6)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Sprint Days',
+                                font: {
+                                    family: 'Montserrat',
+                                    size: 12
+                                }
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Montserrat',
+                                    size: 11
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

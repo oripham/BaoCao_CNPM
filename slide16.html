@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu Hỏi & Thảo Luận - Báo Cáo Môn Công Nghệ Phần Mềm</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom right, #f0f9ff, #ffffff);
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            z-index: 0;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+        .title {
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+        .main-content {
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+        }
+        .gold-accent {
+            color: #d4af37;
+        }
+        .thank-you {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s forwards;
+        }
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: slideUp 1s forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: #f8fafc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.6s forwards;
+        }
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            background-color: #f0f9ff;
+            border-left: 3px solid #3b82f6;
+        }
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        .qr-section {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 1.2s;
+        }
+        .qr-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 1.5rem;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .qr-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        .qr-placeholder {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #e2e8f0, #f8fafc);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            border: 1px dashed #cbd5e1;
+        }
+        .qr-label {
+            font-weight: 500;
+            color: #1e3a8a;
+            margin-top: 0.5rem;
+        }
+        .decorative-element {
+            position: absolute;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        .page-number {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #666;
+            padding: 5px 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+        }
+        .hotel-logo {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            font-size: 24px;
+            color: #1e3a8a;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .contact-1 {
+            animation-delay: 0.7s;
+        }
+        .contact-2 {
+            animation-delay: 0.8s;
+        }
+        .contact-3 {
+            animation-delay: 0.9s;
+        }
+        .contact-4 {
+            animation-delay: 1s;
+        }
+        .confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .thank-you-message {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1e3a8a;
+            position: relative;
+            display: inline-block;
+        }
+        .thank-you-message:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+        }
+        .btn-ask {
+            margin-top: 1.5rem;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            font-weight: 600;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+        .btn-ask:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(59, 130, 246, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-bg"></div>
+        <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+        
+        <!-- Decorative elements -->
+        <i class="fas fa-comments decorative-element text-9xl" style="top: 40%; left: 5%;"></i>
+        <i class="fas fa-question-circle decorative-element text-9xl" style="bottom: 15%; right: 8%;"></i>
+        
+        <div class="content">
+            <div class="title">
+                <h1 class="text-3xl font-bold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">CÂU HỎI & THẢO LUẬN</h1>
+            </div>
+            
+            <div class="main-content">
+                <div class="thank-you">
+                    <h2 class="thank-you-message">
+                        <i class="fas fa-heart text-red-500 mr-2" style="animation: pulse 1.5s infinite;"></i>
+                        Cảm ơn sự theo dõi
+                    </h2>
+                    <p class="text-xl text-gray-600">của quý Thầy/Cô và các bạn!</p>
+                </div>
+                
+                <div class="contact-section">
+                    <h3 class="text-xl font-semibold text-blue-800 flex items-center">
+                        <i class="fas fa-address-card gold-accent mr-2"></i>
+                        Thông tin liên hệ nhóm
+                    </h3>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-item contact-1">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">Email</div>
+                                <div class="text-blue-600">hms-team@example.com</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item contact-2">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">GitHub</div>
+                                <div class="text-blue-600">github.com/hms-project</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item contact-3">
+                            <div class="contact-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">Demo</div>
+                                <div class="text-blue-600">demo-hms.example.com</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item contact-4">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">Hotline</div>
+                                <div class="text-blue-600">(+84) 123 456 789</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="qr-section">
+                    <div class="qr-item">
+                        <div class="qr-placeholder">
+                            <i class="fas fa-qrcode text-3xl text-gray-400"></i>
+                        </div>
+                        <div class="qr-label">GitHub Repository</div>
+                    </div>
+                    
+                    <div class="qr-item">
+                        <div class="qr-placeholder">
+                            <i class="fas fa-qrcode text-3xl text-gray-400"></i>
+                        </div>
+                        <div class="qr-label">Online Demo</div>
+                    </div>
+                </div>
+                
+                <button class="btn-ask" id="trigger-questions">
+                    <i class="fas fa-question-circle"></i>
+                    Đặt câu hỏi thảo luận
+                </button>
+            </div>
+            
+            <div class="hotel-logo">
+                <i class="fas fa-hotel gold-accent"></i> <span class="text-blue-800 font-semibold">HMS</span>
+            </div>
+            
+            <div class="page-number">16/16</div>
+        </div>
+    </div>
+    
+    <script>
+        // Trigger confetti immediately on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('confetti-canvas');
+            const myConfetti = confetti.create(canvas, {
+                resize: true
+            });
+            
+            // Initial confetti burst
+            myConfetti({
+                particleCount: 100,
+                spread: 160,
+                origin: { y: 0.6 },
+                colors: ['#1e3a8a', '#3b82f6', '#d4af37', '#ffffff']
+            });
+            
+            // Button click event
+            document.getElementById('trigger-questions').addEventListener('click', function() {
+                myConfetti({
+                    particleCount: 200,
+                    spread: 180,
+                    origin: { y: 0.7 },
+                    colors: ['#1e3a8a', '#3b82f6', '#d4af37', '#ffffff']
+                });
+            });
+            
+            // Periodic small bursts every 5 seconds
+            setInterval(function() {
+                myConfetti({
+                    particleCount: 20,
+                    angle: Math.random() * 360,
+                    spread: 50,
+                    origin: { 
+                        x: Math.random(), 
+                        y: Math.random() - 0.2
+                    },
+                    colors: ['#1e3a8a', '#3b82f6', '#d4af37', '#ffffff']
+                });
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

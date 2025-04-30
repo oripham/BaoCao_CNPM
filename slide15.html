@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết Luận & Triển Vọng - Báo Cáo Môn Công Nghệ Phần Mềm</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom right, #f0f9ff, #ffffff);
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            z-index: 0;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+        .title {
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+        .main-content {
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+        .gold-accent {
+            color: #d4af37;
+        }
+        .conclusion-section {
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+            margin-bottom: 1.5rem;
+        }
+        .summary-section {
+            animation-delay: 0.2s;
+        }
+        .prospects-section {
+            animation-delay: 0.6s;
+        }
+        .final-section {
+            animation-delay: 1s;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            color: white;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .icon-summary {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+        }
+        .icon-prospects {
+            background: linear-gradient(135deg, #065f46, #10b981);
+        }
+        .icon-conclusion {
+            background: linear-gradient(135deg, #b45309, #d4af37);
+        }
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .point-cards {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+        .point-card {
+            flex: 1;
+            padding: 1.2rem;
+            background-color: #f8fafc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0;
+            animation: slideUp 0.6s forwards;
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid transparent;
+        }
+        .point-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        .summary-card {
+            border-top-color: #3b82f6;
+        }
+        .prospects-card {
+            border-top-color: #10b981;
+        }
+        .conclusion-card {
+            border-top-color: #d4af37;
+        }
+        .point-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 0.8rem;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .summary-icon {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+        }
+        .prospects-icon {
+            background: linear-gradient(135deg, #065f46, #10b981);
+        }
+        .conclusion-icon {
+            background: linear-gradient(135deg, #b45309, #d4af37);
+        }
+        .point-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+            line-height: 1.3;
+        }
+        .point-description {
+            font-size: 0.93rem;
+            color: #475569;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .summary-1 {
+            animation-delay: 0.3s;
+        }
+        .summary-2 {
+            animation-delay: 0.4s;
+        }
+        .summary-3 {
+            animation-delay: 0.5s;
+        }
+        .prospects-1 {
+            animation-delay: 0.7s;
+        }
+        .prospects-2 {
+            animation-delay: 0.8s;
+        }
+        .prospects-3 {
+            animation-delay: 0.9s;
+        }
+        .conclusion-1 {
+            animation-delay: 1.1s;
+        }
+        .conclusion-2 {
+            animation-delay: 1.2s;
+        }
+        .conclusion-3 {
+            animation-delay: 1.3s;
+        }
+        .decorative-element {
+            position: absolute;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        .page-number {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #666;
+            padding: 5px 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+        }
+        .hotel-logo {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            font-size: 24px;
+            color: #1e3a8a;
+        }
+        .final-message {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: linear-gradient(to right, rgba(30, 58, 138, 0.05), rgba(212, 175, 55, 0.1), rgba(30, 58, 138, 0.05));
+            border-radius: 12px;
+            color: #1e3a8a;
+            font-weight: 500;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 1.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-bg"></div>
+        
+        <!-- Decorative elements -->
+        <i class="fas fa-chart-line decorative-element text-9xl" style="top: 40%; left: 5%;"></i>
+        <i class="fas fa-hotel decorative-element text-9xl" style="bottom: 15%; right: 8%;"></i>
+        
+        <div class="content">
+            <div class="title">
+                <h1 class="text-3xl font-bold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">KẾT LUẬN & TRIỂN VỌNG</h1>
+            </div>
+            
+            <div class="main-content">
+                <h2 class="text-2xl font-semibold mb-5 text-blue-800" style="border-bottom: 2px solid #d4af37; padding-bottom: 0.5rem;">
+                    <i class="fas fa-flag-checkered mr-2 gold-accent"></i>
+                    Tổng kết và hướng phát triển
+                </h2>
+                
+                <!-- Summary Section -->
+                <div class="conclusion-section summary-section">
+                    <div class="section-header">
+                        <div class="section-icon icon-summary">
+                            <i class="fas fa-check-double fa-lg"></i>
+                        </div>
+                        <h3 class="section-title">Tổng kết</h3>
+                    </div>
+                    
+                    <div class="point-cards">
+                        <div class="point-card summary-card summary-1">
+                            <div class="point-icon summary-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h4 class="point-title">Áp dụng thành công Agile</h4>
+                            <p class="point-description">Dự án đã áp dụng thành công phương pháp Agile vào quá trình phát triển phần mềm quản lý khách sạn, đảm bảo quá trình phát triển linh hoạt và hiệu quả.</p>
+                        </div>
+                        
+                        <div class="point-card summary-card summary-2">
+                            <div class="point-icon summary-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h4 class="point-title">Đáp ứng yêu cầu thay đổi</h4>
+                            <p class="point-description">Khả năng thích ứng nhanh với các yêu cầu thay đổi, mang lại giải pháp linh hoạt phù hợp với môi trường kinh doanh khách sạn năng động.</p>
+                        </div>
+                        
+                        <div class="point-card summary-card summary-3">
+                            <div class="point-icon summary-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h4 class="point-title">Sản phẩm chất lượng cao</h4>
+                            <p class="point-description">Hệ thống đạt được chất lượng cao nhờ quy trình kiểm thử liên tục, đảm bảo đáp ứng đầy đủ nhu cầu người dùng và các bên liên quan.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Prospects Section -->
+                <div class="conclusion-section prospects-section">
+                    <div class="section-header">
+                        <div class="section-icon icon-prospects">
+                            <i class="fas fa-rocket fa-lg"></i>
+                        </div>
+                        <h3 class="section-title">Triển vọng</h3>
+                    </div>
+                    
+                    <div class="point-cards">
+                        <div class="point-card prospects-card prospects-1">
+                            <div class="point-icon prospects-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h4 class="point-title">Mở rộng tích hợp OTA</h4>
+                            <p class="point-description">Phát triển khả năng tích hợp với các nền tảng đặt phòng trực tuyến (OTA) lớn như Booking.com, Agoda, Expedia để mở rộng kênh phân phối.</p>
+                        </div>
+                        
+                        <div class="point-card prospects-card prospects-2">
+                            <div class="point-icon prospects-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h4 class="point-title">Phân tích dữ liệu nâng cao</h4>
+                            <p class="point-description">Phát triển các tính năng phân tích dữ liệu nâng cao, cung cấp insights giá trị về hành vi khách hàng và xu hướng thị trường khách sạn.</p>
+                        </div>
+                        
+                        <div class="point-card prospects-card prospects-3">
+                            <div class="point-icon prospects-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h4 class="point-title">Ứng dụng AI</h4>
+                            <p class="point-description">Áp dụng trí tuệ nhân tạo (AI) cho việc dự báo giá phòng và tối ưu hóa doanh thu, giúp khách sạn phát huy hiệu quả kinh doanh tối đa.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Conclusion Section -->
+                <div class="conclusion-section final-section">
+                    <div class="section-header">
+                        <div class="section-icon icon-conclusion">
+                            <i class="fas fa-star fa-lg"></i>
+                        </div>
+                        <h3 class="section-title">Kết luận</h3>
+                    </div>
+                    
+                    <div class="point-cards">
+                        <div class="point-card conclusion-card conclusion-1">
+                            <div class="point-icon conclusion-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <h4 class="point-title">Phương pháp phù hợp</h4>
+                            <p class="point-description">Agile là phương pháp phù hợp nhất cho phát triển phần mềm quản lý khách sạn, đáp ứng tốt với đặc thù ngành dịch vụ lưu trú.</p>
+                        </div>
+                        
+                        <div class="point-card conclusion-card conclusion-2">
+                            <div class="point-icon conclusion-icon">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <h4 class="point-title">Tạo giá trị sớm</h4>
+                            <p class="point-description">Phương pháp Agile giúp tạo ra giá trị sớm và liên tục cho người dùng, nhanh chóng đưa sản phẩm có giá trị ra thị trường.</p>
+                        </div>
+                        
+                        <div class="point-card conclusion-card conclusion-3">
+                            <div class="point-icon conclusion-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h4 class="point-title">Cải thiện sự hài lòng</h4>
+                            <p class="point-description">Quy trình làm việc Agile cải thiện đáng kể chất lượng sản phẩm và mức độ hài lòng của khách hàng, mang lại lợi thế cạnh tranh.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="final-message">
+                    <p class="text-lg">Phương pháp Agile đã chứng minh hiệu quả trong việc phát triển hệ thống quản lý khách sạn, đáp ứng nhu cầu thực tế và hướng tới tương lai phát triển bền vững.</p>
+                </div>
+            </div>
+            
+            <div class="hotel-logo">
+                <i class="fas fa-hotel gold-accent"></i> <span class="text-blue-800 font-semibold">HMS</span>
+            </div>
+            
+            <div class="page-number">15/16</div>
+        </div>
+    </div>
+</body>
+</html>

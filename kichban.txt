@@ -1,0 +1,234 @@
+# KỊCH BẢN THUYẾT TRÌNH
+# ÁP DỤNG AGILE CHO DỰ ÁN QUẢN LÝ KHÁCH SẠN
+
+## SLIDE 1: TỔNG QUAN ĐỀ TÀI
+
+**Product Manager (PM):**
+"Kính thưa quý Thầy/Cô và các bạn, hôm nay nhóm chúng em xin trình bày đề tài 'Phát triển hệ thống quản lý khách sạn ứng dụng phương pháp Agile'. Tôi là [Tên], Product Manager của dự án.
+
+Đề tài của chúng em hướng đến việc xây dựng một hệ thống quản lý khách sạn hiện đại, linh hoạt, với phạm vi bao gồm quản lý đặt phòng, các dịch vụ khách sạn, quản lý nhân sự và báo cáo kinh doanh. Chúng em đã áp dụng quy trình Agile, cụ thể là framework Scrum trong quá trình phát triển.
+
+Nhóm chúng em gồm 5 thành viên với các vai trò: Product Manager, Business Analyst, Frontend Developer, Backend Developer và Tester. Giờ tôi xin phép được giới thiệu các thành viên còn lại của nhóm."
+
+[PM giới thiệu từng thành viên]
+
+## SLIDE 2: VẤN ĐỀ VÀ THÁCH THỨC
+
+**Business Analyst (BA):**
+"Xin chào quý Thầy/Cô và các bạn, tôi là [Tên], Business Analyst của dự án. Phần của tôi sẽ trình bày về các vấn đề và thách thức trong phát triển phần mềm quản lý khách sạn.
+
+Qua quá trình nghiên cứu và phân tích, chúng tôi nhận thấy có nhiều thách thức cần giải quyết:
+
+Thứ nhất, yêu cầu nghiệp vụ trong lĩnh vực khách sạn rất phức tạp và thường xuyên thay đổi theo mùa hoặc chiến lược kinh doanh.
+
+Thứ hai, hệ thống cần tương tác với nhiều hệ thống khác như thanh toán, đánh giá từ khách hàng và các đối tác đặt phòng.
+
+Thứ ba, người dùng đòi hỏi giao diện thân thiện và trải nghiệm tốt, đặc biệt là nhân viên lễ tân làm việc trực tiếp với hệ thống hàng ngày.
+
+Ngoài ra, hệ thống phải đảm bảo độ tin cậy cao và thời gian hoạt động liên tục, vì khách sạn hoạt động 24/7. Cuối cùng, bảo mật thông tin khách hàng là một ưu tiên hàng đầu trong ngành dịch vụ lưu trú.
+
+Những thách thức này đòi hỏi chúng tôi phải áp dụng một phương pháp phát triển phù hợp."
+
+## SLIDE 3: TẠI SAO CHỌN AGILE?
+
+**Product Manager (PM):**
+"Trước những thách thức vừa nêu, chúng tôi đã quyết định chọn phương pháp Agile cho dự án này, với những lợi thế nổi bật sau:
+
+Đầu tiên, Agile cho phép chúng tôi thích ứng với thay đổi một cách linh hoạt. Trong ngành khách sạn, nhu cầu và yêu cầu thường xuyên thay đổi, và Agile giúp chúng tôi điều chỉnh theo một cách hiệu quả.
+
+Thứ hai, với phát triển theo chu kỳ Sprint, chúng tôi có thể cung cấp giá trị sớm và liên tục. Sau mỗi Sprint 2 tuần, chúng tôi đều có một phiên bản khả dụng với các tính năng mới.
+
+Thứ ba, Agile đề cao tương tác với người dùng. Chúng tôi nhận phản hồi thường xuyên từ các bên liên quan, đặc biệt là từ đội ngũ vận hành khách sạn, để đảm bảo sản phẩm đáp ứng đúng nhu cầu thực tế.
+
+Phương pháp này cũng giúp giảm thiểu rủi ro thông qua việc phát hiện và xử lý vấn đề sớm. Đồng thời, với kiểm thử liên tục, chúng tôi đảm bảo chất lượng cao cho từng phần của sản phẩm.
+
+Tiếp theo, đồng nghiệp của tôi sẽ chia sẻ chi tiết hơn về quy trình Scrum mà chúng tôi áp dụng."
+
+## SLIDE 4: PHƯƠNG PHÁP AGILE - SCRUM
+
+**Tester:**
+"Xin chào, tôi là [Tên], đảm nhận vai trò Tester trong dự án. Tôi sẽ giới thiệu quy trình Scrum mà chúng tôi đã áp dụng.
+
+Chúng tôi tổ chức các Sprint với chu kỳ phát triển 2 tuần. Trong mỗi Sprint, chúng tôi tập trung vào một tập hợp các tính năng ưu tiên từ Product Backlog.
+
+Về vai trò trong đội dự án, Product Manager của chúng tôi đóng vai trò Product Owner, chịu trách nhiệm định hướng sản phẩm và ưu tiên các tính năng. Business Analyst hỗ trợ phân tích yêu cầu và làm việc với các bên liên quan. Frontend và Backend Developer phụ trách phát triển các thành phần tương ứng, còn tôi, với vai trò Tester, đảm bảo chất lượng của sản phẩm.
+
+Chúng tôi duy trì các sự kiện Scrum chuẩn mực như Sprint Planning để lập kế hoạch, Daily Scrum để cập nhật tiến độ, Sprint Review để demo kết quả và Sprint Retrospective để rút kinh nghiệm sau mỗi Sprint.
+
+Các artifacts chính của chúng tôi bao gồm Product Backlog - danh sách các yêu cầu ưu tiên, Sprint Backlog - danh sách công việc cho Sprint hiện tại và Increment - phần gia tăng sản phẩm sau mỗi Sprint.
+
+Tiếp theo, đồng nghiệp BA của chúng tôi sẽ trình bày về phân tích yêu cầu."
+
+## SLIDE 5: PHÂN TÍCH YÊU CẦU
+
+**Business Analyst (BA):**
+"Sau khi nghiên cứu thị trường và phỏng vấn các bên liên quan, chúng tôi đã xác định bốn nhóm chức năng chính cho hệ thống:
+
+Nhóm thứ nhất là Quản lý đặt phòng, bao gồm các tính năng tìm kiếm và đặt phòng, hủy hoặc thay đổi đặt phòng, và quản lý trạng thái phòng. Đây là nhóm chức năng cốt lõi của hệ thống.
+
+Tiếp theo là Quản lý khách hàng, nơi lưu trữ thông tin cá nhân của khách, lịch sử đặt phòng và quản lý chương trình khách hàng thân thiết.
+
+Nhóm thứ ba là Quản lý vận hành, bao gồm dịch vụ phòng, quản lý nhân sự và bảo trì cơ sở vật chất. Phần này giúp đảm bảo khách sạn vận hành trơn tru.
+
+Cuối cùng là Báo cáo và phân tích, cung cấp các báo cáo doanh thu, thống kê công suất phòng và phân tích xu hướng, giúp ban quản lý đưa ra quyết định kinh doanh.
+
+Dựa trên các nhóm chức năng này, chúng tôi đã xây dựng Product Backlog chi tiết, vậy xin mời đồng nghiệp PM trình bày tiếp về phần này."
+
+## SLIDE 6: PRODUCT BACKLOG
+
+**Product Manager (PM):**
+"Từ các nhóm chức năng đã phân tích, chúng tôi đã xây dựng một Product Backlog với các User Stories được sắp xếp theo độ ưu tiên.
+
+Các User Stories ưu tiên cao bao gồm: US01 - Người quản lý có thể xem tổng quan trạng thái phòng, US02 - Nhân viên lễ tân có thể đặt phòng mới, US03 - Khách hàng có thể đặt phòng online, và các chức năng check-in, check-out cơ bản.
+
+Ở mức ưu tiên trung bình có các User Stories như xem báo cáo doanh thu và cấu hình loại phòng, giá cả. Ở mức thấp hơn là các tính năng bổ sung như đánh giá dịch vụ từ khách hàng.
+
+Mỗi User Story đều được gán điểm ước lượng độ phức tạp, như bạn thấy trong bảng. Điểm này giúp chúng tôi lập kế hoạch Sprint hiệu quả hơn.
+
+Tiếp theo, đồng nghiệp Backend của chúng tôi sẽ trình bày kế hoạch Sprint và phân công công việc."
+
+## SLIDE 7: SPRINT PLANNING
+
+**Backend Developer:**
+"Xin chào, tôi là [Tên], Backend Developer của dự án. Tôi sẽ trình bày về kế hoạch phát triển và phân công công việc trong các Sprint.
+
+Chúng tôi đã lên kế hoạch cho 4 Sprint, mỗi Sprint kéo dài 2 tuần. Trong Sprint 1, chúng tôi tập trung vào các chức năng cốt lõi. BA phân tích chi tiết yêu cầu, tôi thiết lập cơ sở dữ liệu, Frontend Dev xây dựng giao diện quản lý trạng thái phòng, và Tester thiết kế test case.
+
+Sprint 2 tập trung vào quy trình check-in/check-out. BA hoàn thiện quy trình nghiệp vụ, tôi phát triển API xử lý, Frontend Dev xây dựng giao diện, và Tester kiểm thử các quy trình.
+
+Sprint 3 dành cho các tính năng quản lý với BA phân tích yêu cầu báo cáo, tôi phát triển API báo cáo, Frontend Dev xây dựng giao diện quản lý, và Tester kiểm thử các tính năng này.
+
+Cuối cùng, Sprint 4 tập trung vào trải nghiệm người dùng, với BA hoàn thiện quy trình đặt phòng online, tôi tối ưu hiệu năng, Frontend Dev tối ưu giao diện, và Tester kiểm thử tổng thể.
+
+Tiếp theo, tôi xin mời đồng nghiệp Frontend trình bày về kiến trúc hệ thống."
+
+## SLIDE 8: KIẾN TRÚC HỆ THỐNG
+
+**Frontend Developer:**
+"Xin chào, tôi là [Tên], Frontend Developer của dự án. Tôi sẽ giới thiệu về kiến trúc hệ thống mà chúng tôi đã thiết kế.
+
+Hệ thống được xây dựng theo kiến trúc 3 tầng. Tầng trình bày (Frontend) bao gồm giao diện web responsive, ứng dụng di động cho iOS và Android, và giao diện quản trị cho admin. Đây là phần tôi chịu trách nhiệm phát triển, sử dụng các công nghệ hiện đại để đảm bảo trải nghiệm người dùng tốt nhất.
+
+Tầng logic (Backend) do đồng nghiệp Backend phát triển, bao gồm các API RESTful, xử lý nghiệp vụ và quản lý giao dịch. Tầng này đóng vai trò trung gian kết nối giữa giao diện người dùng và dữ liệu.
+
+Tầng dữ liệu sử dụng cơ sở dữ liệu quan hệ PostgreSQL, bộ nhớ đệm Redis để tăng hiệu suất, và lưu trữ đám mây cho các tài nguyên lớn.
+
+Kiến trúc này giúp chúng tôi phát triển độc lập các thành phần, dễ dàng mở rộng và bảo trì hệ thống về sau.
+
+Tiếp theo, đồng nghiệp Tester sẽ trình bày về quản lý chất lượng trong dự án của chúng tôi."
+
+## SLIDE 9: QUẢN LÝ CHẤT LƯỢNG
+
+**Tester:**
+"Trong dự án Agile này, đảm bảo chất lượng là một phần không thể thiếu và được thực hiện xuyên suốt quá trình phát triển.
+
+Chúng tôi áp dụng kiểm thử liên tục với nhiều loại test khác nhau. Unit Testing được thực hiện bởi các developer sử dụng Jest cho Frontend và JUnit cho Backend. Integration Testing kiểm tra sự tương tác giữa các thành phần bằng công cụ như Postman. UI Testing đảm bảo giao diện hoạt động chính xác trên các trình duyệt và thiết bị khác nhau.
+
+Chúng tôi cũng áp dụng Tích hợp liên tục (CI/CD) thông qua GitHub Actions, giúp tự động hóa quá trình kiểm tra và triển khai.
+
+Quản lý chất lượng mã nguồn được thực hiện qua Code Review, SonarQube để phát hiện vấn đề tiềm ẩn, và áp dụng chuẩn coding để đảm bảo tính nhất quán.
+
+Chúng tôi theo dõi các metrics như độ bao phủ kiểm thử (đạt trên 80%), mật độ lỗi dưới 0.1 bug/KLOC, và thời gian phản hồi dưới 2 giây để đảm bảo trải nghiệm người dùng tốt nhất.
+
+Giờ tôi xin mời BA trình bày về quản lý rủi ro trong dự án của chúng tôi."
+
+## SLIDE 10: QUẢN LÝ RỦI RO
+
+**Business Analyst (BA):**
+"Quản lý rủi ro là một phần quan trọng trong mọi dự án phần mềm. Chúng tôi đã nhận diện và đề xuất các biện pháp giảm thiểu cho các rủi ro chính.
+
+Rủi ro đầu tiên là thay đổi yêu cầu thường xuyên, có mức độ ảnh hưởng cao và xác suất cao. Để giảm thiểu, chúng tôi áp dụng phương pháp Agile và chia nhỏ sprint để nhanh chóng thích ứng với thay đổi.
+
+Thứ hai là rủi ro đội ngũ thiếu kinh nghiệm với Agile, được giảm thiểu thông qua đào tạo và coaching.
+
+Các rủi ro khác bao gồm khó khăn khi tích hợp với hệ thống thanh toán, vấn đề hiệu năng khi tải cao, và bảo mật dữ liệu khách hàng. Mỗi rủi ro đều được đánh giá và có biện pháp giảm thiểu cụ thể.
+
+Tiếp theo, đồng nghiệp Backend sẽ giới thiệu về công cụ và công nghệ chúng tôi sử dụng."
+
+## SLIDE 11: CÔNG CỤ VÀ CÔNG NGHỆ
+
+**Backend Developer:**
+"Dự án của chúng tôi sử dụng các công nghệ hiện đại phù hợp với yêu cầu hệ thống.
+
+Cho phần Frontend, chúng tôi sử dụng React.js để xây dựng giao diện động, cùng với Bootstrap cho UI components và Redux để quản lý state.
+
+Về Backend, chúng tôi chọn Node.js với framework Express.js để xây dựng các RESTful APIs phục vụ cho cả web và mobile app.
+
+Cho cơ sở dữ liệu, chúng tôi sử dụng PostgreSQL làm database chính, Redis cho cache, và có thể dùng MongoDB cho một số dữ liệu phi cấu trúc.
+
+Về DevOps, chúng tôi ứng dụng Docker để đóng gói ứng dụng, triển khai trên AWS, và sử dụng GitHub Actions cho CI/CD pipeline.
+
+Để quản lý dự án Agile, chúng tôi dùng Jira để theo dõi tiến độ, Confluence để lưu trữ tài liệu, và Slack để giao tiếp trong nhóm.
+
+Giờ tôi xin mời đồng nghiệp Frontend Demo prototype của hệ thống."
+
+## SLIDE 12: DEMO PROTOTYPE
+
+**Frontend Developer:**
+"Tôi xin giới thiệu một số giao diện mẫu mà chúng tôi đã phát triển cho hệ thống quản lý khách sạn.
+
+[Giới thiệu từng màn hình]
+
+Đầu tiên là màn hình chính - Dashboard, cung cấp tổng quan về trạng thái phòng, đặt phòng mới, và các chỉ số quan trọng khác. Giao diện được thiết kế trực quan với màu sắc khác nhau đại diện cho các trạng thái phòng khác nhau.
+
+Tiếp theo là màn hình đặt phòng, với form thông tin đặt phòng và lịch trực quan giúp nhân viên dễ dàng kiểm tra tình trạng phòng theo ngày.
+
+Cuối cùng là màn hình quản lý, nơi quản lý có thể xem báo cáo doanh thu theo nhiều tiêu chí và quản lý nhân sự trong khách sạn.
+
+Tất cả giao diện đều được thiết kế responsive, hoạt động tốt trên cả desktop và thiết bị di động.
+
+Tiếp theo, PM sẽ chia sẻ về kết quả Sprint đầu tiên của chúng tôi."
+
+## SLIDE 13: KẾT QUẢ SPRINT ĐẦU TIÊN
+
+**Product Manager (PM):**
+"Sau 2 tuần Sprint đầu tiên, chúng tôi đã đạt được một số kết quả quan trọng.
+
+BA đã hoàn tất phân tích chi tiết các user story ưu tiên cao, tạo nền tảng vững chắc cho quá trình phát triển.
+
+Backend Developer đã thiết lập cấu trúc dữ liệu và phát triển API cơ bản cho việc đặt phòng, là nền tảng để xây dựng các tính năng khác.
+
+Frontend Developer đã hoàn thành giao diện quản lý trạng thái phòng với thiết kế trực quan, giúp nhân viên dễ dàng nắm bắt tình hình phòng.
+
+Tester đã chuẩn bị đầy đủ test case cho các tính năng cốt lõi, đảm bảo quá trình kiểm thử được thực hiện đầy đủ.
+
+Chúng tôi đang tiến hành các công việc tiếp theo như tích hợp hệ thống thanh toán, hoàn thiện giao diện người dùng và chuẩn bị cho Sprint 2.
+
+Về metrics, chúng tôi đạt velocity 35 story points, burndown chart đáp ứng kỳ vọng, và đạt 95% test coverage cho các tính năng đã phát triển.
+
+Giờ tôi xin mời Tester chia sẻ về bài học kinh nghiệm từ Sprint đầu tiên."
+
+## SLIDE 14: BÀI HỌC KINH NGHIỆM
+
+**Tester:**
+"Qua Sprint đầu tiên, chúng tôi đã rút ra nhiều bài học quý giá khi áp dụng Agile trong dự án này.
+
+Về mặt thành công, Daily Scrum đã giúp chúng tôi phát hiện vấn đề sớm giữa các vai trò, đặc biệt là khi có sự phụ thuộc giữa Frontend và Backend. Chúng tôi cũng thấy sự phối hợp hiệu quả giữa BA, Frontend và Backend Developer, giúp quá trình phát triển diễn ra trơn tru. PM đã điều phối tốt yêu cầu và tôi, với vai trò Tester, đã đảm bảo chất lượng sản phẩm thông qua các test case chi tiết.
+
+Tuy nhiên, chúng tôi cũng gặp một số thách thức như ước lượng độ phức tạp ban đầu chưa chính xác, dẫn đến một số công việc không hoàn thành trong Sprint. Giao tiếp giữa Frontend và Backend Developer đôi khi gặp khó khăn do khác biệt về thuật ngữ. Technical debt cũng cần được quản lý chặt chẽ hơn.
+
+Để cải tiến, chúng tôi sẽ áp dụng Planning Poker để ước lượng chính xác hơn, tăng cường hợp tác giữa BA, Frontend và Backend Developer, và tôi sẽ tham gia sớm hơn trong quá trình phát triển để phát hiện vấn đề từ đầu.
+
+Tiếp theo, BA sẽ trình bày phần kết luận và triển vọng của dự án."
+
+## SLIDE 15: KẾT LUẬN & TRIỂN VỌNG
+
+**Business Analyst (BA):**
+"Để tổng kết, chúng tôi đã áp dụng thành công phương pháp Agile vào dự án phát triển phần mềm quản lý khách sạn. Phương pháp này giúp chúng tôi đáp ứng linh hoạt các yêu cầu thay đổi, phát hiện và xử lý vấn đề sớm, đồng thời tạo ra sản phẩm có chất lượng cao, đáp ứng nhu cầu người dùng.
+
+Về triển vọng, chúng tôi dự định mở rộng tích hợp với các nền tảng đặt phòng trực tuyến (OTA) như Booking.com và Agoda, phát triển các tính năng phân tích dữ liệu nâng cao, và áp dụng AI cho việc dự báo giá và tối ưu doanh thu.
+
+Kết luận, chúng tôi nhận thấy Agile là phương pháp phù hợp nhất cho phát triển phần mềm quản lý khách sạn. Phương pháp này giúp tạo ra giá trị sớm và liên tục cho người dùng, cải thiện chất lượng sản phẩm và gia tăng sự hài lòng của khách hàng.
+
+Xin cảm ơn quý Thầy/Cô và các bạn đã lắng nghe. Giờ chúng tôi xin dành thời gian cho phần câu hỏi và thảo luận."
+
+## SLIDE 16: CÂU HỎI & THẢO LUẬN
+
+**Product Manager (PM):**
+"Chúng tôi xin chân thành cảm ơn quý Thầy/Cô và các bạn đã theo dõi bài thuyết trình của nhóm. Giờ đây, chúng tôi rất hân hạnh được lắng nghe các câu hỏi và góp ý từ quý vị.
+
+Thông tin liên hệ của nhóm chúng tôi được hiển thị trên slide. Nếu sau buổi thuyết trình, quý vị có thêm câu hỏi hoặc đề xuất, vui lòng liên hệ với chúng tôi qua email hoặc GitHub. Chúng tôi cũng có đường link demo cho phiên bản hiện tại của hệ thống.
+
+Một lần nữa, cảm ơn quý vị đã dành thời gian lắng nghe bài thuyết trình của chúng tôi."
+
+[Phần này dành cho cả nhóm trả lời câu hỏi từ người nghe]

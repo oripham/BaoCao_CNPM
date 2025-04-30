@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tại Sao Chọn Agile? - Báo Cáo Môn Công Nghệ Phần Mềm</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom right, #f0f9ff, #ffffff);
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            z-index: 0;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+        .title {
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+        .main-content {
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+        .advantage-card {
+            background-color: #f8fafc;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #d4af37;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: zoomIn 0.6s forwards;
+            transition: all 0.3s ease;
+        }
+        .advantage-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        .advantage-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            color: white;
+            font-size: 28px;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .advantage-content {
+            flex-grow: 1;
+        }
+        .decorative-element {
+            position: absolute;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        .page-number {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #666;
+            padding: 5px 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+        }
+        .hotel-logo {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            font-size: 24px;
+            color: #1e3a8a;
+        }
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .gold-accent {
+            color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-bg"></div>
+        
+        <!-- Decorative elements -->
+        <i class="fas fa-clipboard-list decorative-element text-9xl" style="top: 60%; left: 5%;"></i>
+        <i class="fas fa-chart-line decorative-element text-9xl" style="bottom: 15%; right: 8%;"></i>
+        
+        <div class="content">
+            <div class="title">
+                <h1 class="text-3xl font-bold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">TẠI SAO CHỌN AGILE?</h1>
+            </div>
+            
+            <div class="main-content">
+                <h2 class="text-2xl font-semibold mb-6 text-blue-800" style="border-bottom: 2px solid #d4af37; padding-bottom: 0.5rem;">
+                    <i class="fas fa-lightbulb mr-2 gold-accent"></i>
+                    Lợi thế của phương pháp Agile trong phát triển PMQL khách sạn
+                </h2>
+                
+                <div class="advantages mt-8">
+                    <div class="advantage-card" style="animation-delay: 0.3s;">
+                        <div class="advantage-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="advantage-content">
+                            <h3 class="text-xl font-medium mb-1 text-blue-700">Thích ứng với thay đổi</h3>
+                            <p class="text-gray-600">Linh hoạt điều chỉnh theo yêu cầu mới, đặc biệt trong môi trường kinh doanh khách sạn luôn biến động</p>
+                        </div>
+                    </div>
+                    
+                    <div class="advantage-card" style="animation-delay: 0.6s;">
+                        <div class="advantage-icon">
+                            <i class="fas fa-circle-notch"></i>
+                        </div>
+                        <div class="advantage-content">
+                            <h3 class="text-xl font-medium mb-1 text-blue-700">Phát triển theo chu kỳ</h3>
+                            <p class="text-gray-600">Cung cấp giá trị sớm và liên tục, cho phép nhận phản hồi và điều chỉnh kịp thời</p>
+                        </div>
+                    </div>
+                    
+                    <div class="advantage-card" style="animation-delay: 0.9s;">
+                        <div class="advantage-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="advantage-content">
+                            <h3 class="text-xl font-medium mb-1 text-blue-700">Tương tác với người dùng</h3>
+                            <p class="text-gray-600">Phản hồi thường xuyên từ các bên liên quan giúp sản phẩm đáp ứng đúng nhu cầu thực tế</p>
+                        </div>
+                    </div>
+                    
+                    <div class="advantage-card" style="animation-delay: 1.2s;">
+                        <div class="advantage-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="advantage-content">
+                            <h3 class="text-xl font-medium mb-1 text-blue-700">Giảm thiểu rủi ro</h3>
+                            <p class="text-gray-600">Phát hiện và xử lý vấn đề sớm trong quá trình phát triển, tránh các lỗi lớn ở giai đoạn cuối</p>
+                        </div>
+                    </div>
+                    
+                    <div class="advantage-card" style="animation-delay: 1.5s;">
+                        <div class="advantage-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="advantage-content">
+                            <h3 class="text-xl font-medium mb-1 text-blue-700">Chất lượng cao</h3>
+                            <p class="text-gray-600">Kiểm thử liên tục đảm bảo sản phẩm ổn định và đáp ứng các yêu cầu chất lượng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hotel-logo">
+                <i class="fas fa-hotel gold-accent"></i> <span class="text-blue-800 font-semibold">HMS</span>
+            </div>
+            
+            <div class="page-number">3/16</div>
+        </div>
+    </div>
+</body>
+</html>

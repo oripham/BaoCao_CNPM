@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phân Tích Yêu Cầu - Báo Cáo Môn Công Nghệ Phần Mềm</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom right, #f0f9ff, #ffffff);
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            z-index: 0;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+        .title {
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+        .main-content {
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+        .requirement-group {
+            background-color: #f8fafc;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .group-header {
+            background: linear-gradient(to right, #2563eb, #3b82f6);
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .group-header:hover {
+            background: linear-gradient(to right, #1d4ed8, #2563eb);
+        }
+        .group-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin-right: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .group-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            flex-grow: 1;
+        }
+        .toggle-icon {
+            transition: transform 0.3s ease;
+        }
+        .group-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            padding: 0 1.5rem;
+        }
+        .requirement-group.active .group-content {
+            max-height: 300px;
+            padding: 1.5rem;
+        }
+        .requirement-group.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-left: 4px solid #d4af37;
+            background-color: #ffffff;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transform: translateX(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        .requirement-group.active .feature-item {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .feature-icon {
+            color: #d4af37;
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+        .decorative-element {
+            position: absolute;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        .page-number {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #666;
+            padding: 5px 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+        }
+        .hotel-logo {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            font-size: 24px;
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-bg"></div>
+        
+        <!-- Decorative elements -->
+        <i class="fas fa-tasks decorative-element text-9xl" style="top: 60%; left: 5%;"></i>
+        <i class="fas fa-clipboard-list decorative-element text-9xl" style="bottom: 15%; right: 8%;"></i>
+        
+        <div class="content">
+            <div class="title">
+                <h1 class="text-3xl font-bold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">PHÂN TÍCH YÊU CẦU</h1>
+            </div>
+            
+            <div class="main-content">
+                <h2 class="text-2xl font-semibold mb-6 text-blue-800" style="border-bottom: 2px solid #d4af37; padding-bottom: 0.5rem;">
+                    <i class="fas fa-list-alt mr-2" style="color: #d4af37;"></i>
+                    Các nhóm chức năng chính
+                </h2>
+                
+                <div class="requirements-groups mt-4">
+                    <!-- Group 1: Booking Management -->
+                    <div class="requirement-group" id="group1">
+                        <div class="group-header" onclick="toggleGroup('group1')">
+                            <div class="group-icon">
+                                <i class="fas fa-calendar-check fa-lg"></i>
+                            </div>
+                            <h3 class="group-title">Quản lý đặt phòng</h3>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="group-content">
+                            <div class="feature-item" style="transition-delay: 0.1s;">
+                                <i class="fas fa-search feature-icon"></i>
+                                <div>
+                                    <p class="font-medium">Tìm kiếm và đặt phòng</p>
+                                    <p class="text-sm text-gray-600">Cho phép tìm phòng trống và đặt phòng theo ngày, giá, loại phòng</p>
+                                </div>
+                            </div>
+                            <div class="feature-item" style="transition-delay: 0.2s;">
+                                <i class="fas fa-calendar-times feature-icon"></i>
+                                <div>
+                                    <p class="font-medium">Hủy/thay đổi đặt phòng</p>
+                                    <p class="text-sm text-gray-600">Quản lý việc hủy hoặc điều chỉnh các đặt phòng hiện có</p>
+                                </div>
+                            </div>
+                            <div class="feature-item" style="transition-delay: 0.3s;">
+                                <i class="fas fa-door-closed feature-icon"></i>
+                                <div>
+                                    <p class="font-medium">Quản lý trạng thái phòng</p>
+                                    <p class="text-sm text-gray-600">Theo dõi các phòng đã đặt, trống, đang dọn dẹp hoặc bảo trì</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Group 2: Customer Management -->
+                    <div class="requirement-group" id="group2">
+                        <div class="group-header" onclick="toggleGroup('group2')">
+                            <div class="group-icon">
+                                <i class="fas fa-users fa-lg"></i>
+                            </div>
+                            <h3 class="group-title">Quản lý khách hàng</h3>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="group-content">
+                            <div class="feature-item" style="transition-delay: 0.1s;">
+                                <i class="fas fa-id-card feature-icon"></i>
+                                <div>
+                                    <p class="font-medium">Thông tin cá nhân</p>
+                                    <p class="text-sm text-gray-600">Lưu trữ và quản lý thông tin của khách hàng</p>
+                                </div>
+                            </div>
+                            <div class="feature-item" style="transition-delay: 0.2s;">
+                                <i class="fas fa-history feature-icon"></i>
+                                <div>
+                                    <p class="font-medium">Lịch sử đặt phòng</p>
+                                    <p class="text-sm text-gray-600">Xem lại các lần đặt phòng trước đây của khách hàng</p>
+                                </div>
+                            </div>
+                            <div class="feature-item" style="transition-delay: 0.3s;">
+                                <i class="fas fa-award feature-icon"></i>
+                                <div>
+                                    <p class="font-medium">Chương trình khách hàng thân thiết</p>
+                                    <p class="text-sm text-gray-600">Quản lý điểm thưởng và ưu đãi dành cho khách hàng thường xuyên</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Group 3: Operations Management -->
+                    <div class="requirement-group" id="group3">
+                        <div class="group-header" onclick="toggleGroup('group3')">
+                            <div class="group-icon">
+                                <i class="fas fa-cogs fa-lg"></i>
+                            </div>
+                            <h3 class="group-title">Quản lý vận hành</h3>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="group-content">
+                            <div class="feature-item" style="transition-delay: 0.1s;">
+                                <i class="fas fa-concierge-bell feature-icon"></i>
+                                <div>
+                                    <p class="font-medium">Dịch vụ phòng</p>
+                                    <p class="text-sm text-gray-600">Quản lý các yêu cầu dịch vụ phòng và phục vụ khách hàng</p>
+                                </div>
+                            </div>
+                            <div class="feature-item" style="transition-delay: 0.2s;">
+                                <i class="fas fa-user-tie feature-icon"></i>
+                                <div>
+                                    <p class="font-medium">Quản lý nhân sự</p>
+                                    <p class="text-sm text-gray-600">Phân công công việc và quản lý nhân viên khách sạn</p>
+                                </div>
+                            </div>
+                            <div class="feature-item" style="transition-delay: 0.3s;">
+                                <i class="fas fa-tools feature-icon"></i>
+                                <div>
+                                    <p class="font-medium">Bảo trì cơ sở vật chất</p>
+                                    <p class="text-sm text-gray-600">Lập kế hoạch và theo dõi bảo trì thiết bị và cơ sở vật chất</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Group 4: Reports and Analytics -->
+                    <div class="requirement-group" id="group4">
+                        <div class="group-header" onclick="toggleGroup('group4')">
+                            <div class="group-icon">
+                                <i class="fas fa-chart-bar fa-lg"></i>
+                            </div>
+                            <h3 class="group-title">Báo cáo và phân tích</h3>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="group-content">
+                            <div class="feature-item" style="transition-delay: 0.1s;">
+                                <i class="fas fa-money-bill-wave feature-icon"></i>
+                                <div>
+                                    <p class="font-medium">Báo cáo doanh thu</p>
+                                    <p class="text-sm text-gray-600">Thống kê doanh thu theo phòng, dịch vụ, thời gian</p>
+                                </div>
+                            </div>
+                            <div class="feature-item" style="transition-delay: 0.2s;">
+                                <i class="fas fa-percentage feature-icon"></i>
+                                <div>
+                                    <p class="font-medium">Thống kê công suất</p>
+                                    <p class="text-sm text-gray-600">Phân tích tỷ lệ lấp đầy và hiệu suất sử dụng phòng</p>
+                                </div>
+                            </div>
+                            <div class="feature-item" style="transition-delay: 0.3s;">
+                                <i class="fas fa-chart-line feature-icon"></i>
+                                <div>
+                                    <p class="font-medium">Phân tích xu hướng</p>
+                                    <p class="text-sm text-gray-600">Dự báo nhu cầu và phân tích hành vi khách hàng</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hotel-logo">
+                <i class="fas fa-hotel" style="color: #d4af37;"></i> <span class="text-blue-800 font-semibold">HMS</span>
+            </div>
+            
+            <div class="page-number">5/16</div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleGroup(groupId) {
+            const group = document.getElementById(groupId);
+            
+            // Close all groups first
+            document.querySelectorAll('.requirement-group').forEach(item => {
+                if (item.id !== groupId) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle the clicked group
+            group.classList.toggle('active');
+            
+            // Ensure the feature items animate properly by resetting transition delays
+            if (group.classList.contains('active')) {
+                const items = group.querySelectorAll('.feature-item');
+                items.forEach((item, index) => {
+                    item.style.transitionDelay = (0.1 * (index + 1)) + 's';
+                });
+            }
+        }
+        
+        // Auto-open the first group on page load
+        window.onload = function() {
+            document.getElementById('group1').classList.add('active');
+        };
+    </script>
+</body>
+</html>

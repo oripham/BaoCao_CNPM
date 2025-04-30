@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprint Planning - Báo Cáo Môn Công Nghệ Phần Mềm</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom right, #f0f9ff, #ffffff);
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            z-index: 0;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+        .title {
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+        .main-content {
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+        .sprint-card {
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 0.6s forwards;
+            position: relative;
+        }
+        .sprint-header {
+            padding: 0.8rem 1.2rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .sprint-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .sprint-content {
+            padding: 1.2rem;
+            background-color: #f8fafc;
+        }
+        .task-list {
+            margin-top: 0.5rem;
+        }
+        .task-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        .task-item:hover {
+            background-color: #f0f7ff;
+            transform: translateX(5px);
+        }
+        .role-badge {
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            min-width: 80px;
+            text-align: center;
+            margin-right: 1rem;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+        .timeline {
+            margin-top: 1.5rem;
+            position: relative;
+            height: 110px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #1e3a8a, #3b82f6);
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+        .sprint-node {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            animation: scaleIn 0.5s forwards;
+        }
+        .sprint-node:after {
+            content: '';
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            border: 3px solid;
+            border-radius: 50%;
+        }
+        .sprint-node-label {
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-weight: 500;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+            animation-delay: 0.3s;
+        }
+        .sprint-duration {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.8rem;
+            background: #f0f7ff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            border: 1px solid #dbeafe;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+            animation-delay: 0.4s;
+        }
+        .decorative-element {
+            position: absolute;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        .page-number {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #666;
+            padding: 5px 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+        }
+        .hotel-logo {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            font-size: 24px;
+            color: #1e3a8a;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .gold-accent {
+            color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-bg"></div>
+        
+        <!-- Decorative elements -->
+        <i class="fas fa-calendar-alt decorative-element text-9xl" style="top: 60%; left: 5%;"></i>
+        <i class="fas fa-tasks decorative-element text-9xl" style="bottom: 15%; right: 8%;"></i>
+        
+        <div class="content">
+            <div class="title">
+                <h1 class="text-3xl font-bold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">SPRINT PLANNING</h1>
+            </div>
+            
+            <div class="main-content">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-800" style="border-bottom: 2px solid #d4af37; padding-bottom: 0.5rem;">
+                    <i class="fas fa-project-diagram mr-2 gold-accent"></i>
+                    Kế hoạch phát triển và phân công
+                </h2>
+                
+                <div class="grid grid-cols-2 gap-4 mt-4">
+                    <!-- Sprint 1 -->
+                    <div class="sprint-card" style="animation-delay: 0.1s;">
+                        <div class="sprint-header" style="background: linear-gradient(to right, #2563eb, #3b82f6);">
+                            <div class="sprint-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Sprint 1: Chức năng cốt lõi</h3>
+                                <p class="text-sm text-blue-100">2 tuần</p>
+                            </div>
+                        </div>
+                        <div class="sprint-content">
+                            <div class="task-list">
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #8B5CF6;">BA</span>
+                                    <p>Phân tích chi tiết yêu cầu của các tính năng cốt lõi</p>
+                                </div>
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #10B981;">Backend</span>
+                                    <p>Thiết lập cơ sở dữ liệu</p>
+                                </div>
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #3B82F6;">Frontend</span>
+                                    <p>Giao diện quản lý trạng thái phòng</p>
+                                </div>
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #F59E0B;">Tester</span>
+                                    <p>Thiết kế test case cho các tính năng cốt lõi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sprint 2 -->
+                    <div class="sprint-card" style="animation-delay: 0.2s;">
+                        <div class="sprint-header" style="background: linear-gradient(to right, #D97706, #F59E0B);">
+                            <div class="sprint-icon">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Sprint 2: Quy trình check-in/check-out</h3>
+                                <p class="text-sm text-blue-100">1 tuần</p>
+                            </div>
+                        </div>
+                        <div class="sprint-content">
+                            <div class="task-list">
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #8B5CF6;">BA</span>
+                                    <p>Hoàn thiện quy trình nghiệp vụ check-in/check-out</p>
+                                </div>
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #10B981;">Backend</span>
+                                    <p>API xử lý check-in/check-out và tính hóa đơn</p>
+                                </div>
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #3B82F6;">Frontend</span>
+                                    <p>Giao diện quản lý thông tin khách hàng</p>
+                                </div>
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #F59E0B;">Tester</span>
+                                    <p>Kiểm thử các quy trình nghiệp vụ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sprint 3 -->
+                    <div class="sprint-card" style="animation-delay: 0.3s;">
+                        <div class="sprint-header" style="background: linear-gradient(to right, #059669, #10B981);">
+                            <div class="sprint-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Sprint 3: Tính năng quản lý</h3>
+                                <p class="text-sm text-blue-100">1 tuần</p>
+                            </div>
+                        </div>
+                        <div class="sprint-content">
+                            <div class="task-list">
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #8B5CF6;">BA</span>
+                                    <p>Phân tích yêu cầu báo cáo và cấu hình</p>
+                                </div>
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #10B981;">Backend</span>
+                                    <p>API báo cáo và cấu hình hệ thống</p>
+                                </div>
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #3B82F6;">Frontend</span>
+                                    <p>Giao diện quản lý và báo cáo</p>
+                                </div>
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #F59E0B;">Tester</span>
+                                    <p>Kiểm thử tính năng quản lý</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sprint 4 -->
+                    <div class="sprint-card" style="animation-delay: 0.4s;">
+                        <div class="sprint-header" style="background: linear-gradient(to right, #7C3AED, #8B5CF6);">
+                            <div class="sprint-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Sprint 4: Trải nghiệm người dùng</h3>
+                                <p class="text-sm text-blue-100">1 tuần</p>
+                            </div>
+                        </div>
+                        <div class="sprint-content">
+                            <div class="task-list">
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #8B5CF6;">BA</span>
+                                    <p>Hoàn thiện quy trình đặt phòng online</p>
+                                </div>
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #10B981;">Backend</span>
+                                    <p>API đánh giá và tối ưu hiệu năng</p>
+                                </div>
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #3B82F6;">Frontend</span>
+                                    <p>Tối ưu giao diện người dùng</p>
+                                </div>
+                                <div class="task-item">
+                                    <span class="role-badge" style="background-color: #F59E0B;">Tester</span>
+                                    <p>Kiểm thử tổng thể và trải nghiệm người dùng</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline visualization -->
+                <div class="timeline mt-6">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="sprint-node" style="border-color: #3b82f6; animation-delay: 0.5s;">
+                        <i class="fas fa-rocket text-blue-600 text-xl"></i>
+                        <div class="sprint-node-label text-blue-600">Sprint 1</div>
+                        <div class="sprint-duration">2 tuần</div>
+                    </div>
+                    
+                    <div class="sprint-node" style="border-color: #F59E0B; animation-delay: 0.6s;">
+                        <i class="fas fa-clipboard-check text-amber-600 text-xl"></i>
+                        <div class="sprint-node-label text-amber-600">Sprint 2</div>
+                        <div class="sprint-duration">1 tuần</div>
+                    </div>
+                    
+                    <div class="sprint-node" style="border-color: #10B981; animation-delay: 0.7s;">
+                        <i class="fas fa-cogs text-emerald-600 text-xl"></i>
+                        <div class="sprint-node-label text-emerald-600">Sprint 3</div>
+                        <div class="sprint-duration">1 tuần</div>
+                    </div>
+                    
+                    <div class="sprint-node" style="border-color: #8B5CF6; animation-delay: 0.8s;">
+                        <i class="fas fa-users text-purple-600 text-xl"></i>
+                        <div class="sprint-node-label text-purple-600">Sprint 4</div>
+                        <div class="sprint-duration">1 tuần</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

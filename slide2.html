@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vấn Đề và Thách Thức - Báo Cáo Môn Công Nghệ Phần Mềm</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom right, #f0f9ff, #ffffff);
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            z-index: 0;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+        .title {
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+        .main-content {
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+        .challenge-item {
+            display: flex;
+            align-items: center;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+            border-radius: 10px;
+            background-color: #f8fafc;
+            border-left: 5px solid #3b82f6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transform: translateX(100px);
+            opacity: 0;
+            animation: slideFromRight 0.8s forwards;
+            transition: all 0.3s ease;
+        }
+        .challenge-item:hover {
+            transform: translateX(0) scale(1.02);
+            border-left-color: #d4af37;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        .challenge-icon {
+            font-size: 24px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .challenge-content {
+            flex-grow: 1;
+        }
+        .decorative-element {
+            position: absolute;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        .page-number {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #666;
+            padding: 5px 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+        }
+        .hotel-logo {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            font-size: 24px;
+            color: #1e3a8a;
+        }
+        @keyframes slideFromRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .gold-accent {
+            color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-bg"></div>
+        
+        <!-- Decorative elements -->
+        <i class="fas fa-concierge-bell decorative-element text-9xl" style="top: 60%; left: 5%;"></i>
+        <i class="fas fa-hotel decorative-element text-9xl" style="bottom: 15%; right: 8%;"></i>
+        
+        <div class="content">
+            <div class="title">
+                <h1 class="text-3xl font-bold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">VẤN ĐỀ VÀ THÁCH THỨC</h1>
+            </div>
+            
+            <div class="main-content">
+                <h2 class="text-2xl font-semibold mb-6 text-blue-800" style="border-bottom: 2px solid #d4af37; padding-bottom: 0.5rem;">
+                    <i class="fas fa-exclamation-triangle mr-2 gold-accent"></i>
+                    Thách thức trong phát triển phần mềm quản lý khách sạn
+                </h2>
+                
+                <div class="challenges mt-8">
+                    <div class="challenge-item" style="animation-delay: 0.3s;">
+                        <div class="challenge-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="challenge-content">
+                            <p class="text-lg font-medium text-gray-800">Yêu cầu nghiệp vụ phức tạp và thường xuyên thay đổi</p>
+                            <p class="text-sm text-gray-600 mt-1">Quy trình khách sạn đa dạng và cần linh hoạt thích ứng với nhu cầu kinh doanh</p>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-item" style="animation-delay: 0.6s;">
+                        <div class="challenge-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="challenge-content">
+                            <p class="text-lg font-medium text-gray-800">Cần tương tác với nhiều hệ thống khác nhau</p>
+                            <p class="text-sm text-gray-600 mt-1">Tích hợp với cổng thanh toán, hệ thống đánh giá và các đối tác đặt phòng trực tuyến</p>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-item" style="animation-delay: 0.9s;">
+                        <div class="challenge-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="challenge-content">
+                            <p class="text-lg font-medium text-gray-800">Đòi hỏi giao diện thân thiện và trải nghiệm người dùng tốt</p>
+                            <p class="text-sm text-gray-600 mt-1">Giao diện dễ sử dụng cho nhân viên và mang lại trải nghiệm tốt cho khách hàng</p>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-item" style="animation-delay: 1.2s;">
+                        <div class="challenge-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="challenge-content">
+                            <p class="text-lg font-medium text-gray-800">Yêu cầu cao về độ tin cậy và thời gian hoạt động</p>
+                            <p class="text-sm text-gray-600 mt-1">Hệ thống cần hoạt động liên tục 24/7 và đảm bảo ổn định khi tải cao</p>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-item" style="animation-delay: 1.5s;">
+                        <div class="challenge-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div class="challenge-content">
+                            <p class="text-lg font-medium text-gray-800">Bảo mật thông tin khách hàng là ưu tiên hàng đầu</p>
+                            <p class="text-sm text-gray-600 mt-1">Tuân thủ các quy định về bảo vệ dữ liệu và thông tin cá nhân của khách hàng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
