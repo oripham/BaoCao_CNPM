@@ -92,7 +92,8 @@ Tiếp theo, đồng nghiệp Backend của chúng tôi sẽ trình bày kế ho
 **Backend Developer:**
 "Xin chào, tôi là [Tên], Backend Developer của dự án. Tôi sẽ trình bày về kế hoạch phát triển và phân công công việc trong các Sprint.
 
-Chúng tôi đã lên kế hoạch cho 4 Sprint, mỗi Sprint kéo dài 2 tuần. Trong Sprint 1, chúng tôi tập trung vào các chức năng cốt lõi. BA phân tích chi tiết yêu cầu, tôi thiết lập cơ sở dữ liệu, Frontend Dev xây dựng giao diện quản lý trạng thái phòng, và Tester thiết kế test case.
+Chúng tôi đã lên kế hoạch cho 4 Sprint, mỗi Sprint kéo dài 2 tuần. 
+Trong Sprint 1, chúng tôi tập trung vào các chức năng cốt lõi. BA phân tích chi tiết yêu cầu, tôi thiết lập cơ sở dữ liệu, Frontend Dev xây dựng giao diện quản lý trạng thái phòng, và Tester thiết kế test case.
 
 Sprint 2 tập trung vào quy trình check-in/check-out. BA hoàn thiện quy trình nghiệp vụ, tôi phát triển API xử lý, Frontend Dev xây dựng giao diện, và Tester kiểm thử các quy trình.
 
@@ -152,13 +153,13 @@ Tiếp theo, đồng nghiệp Backend sẽ giới thiệu về công cụ và c�
 
 Cho phần Frontend, chúng tôi sử dụng React.js để xây dựng giao diện động, cùng với Bootstrap cho UI components và Redux để quản lý state.
 
-Về Backend, chúng tôi chọn Node.js với framework Express.js để xây dựng các RESTful APIs phục vụ cho cả web và mobile app.
+Về Backend, chúng tôi chọn ASP .NET CORE với ENTITY FRAMEWORK để xây dựng các RESTful APIs phục vụ cho web .
 
-Cho cơ sở dữ liệu, chúng tôi sử dụng PostgreSQL làm database chính, Redis cho cache, và có thể dùng MongoDB cho một số dữ liệu phi cấu trúc.
+Cho cơ sở dữ liệu, chúng tôi sử dụng SQLSERVER  làm database chính.
 
 Về DevOps, chúng tôi ứng dụng Docker để đóng gói ứng dụng, triển khai trên AWS, và sử dụng GitHub Actions cho CI/CD pipeline.
 
-Để quản lý dự án Agile, chúng tôi dùng Jira để theo dõi tiến độ, Confluence để lưu trữ tài liệu, và Slack để giao tiếp trong nhóm.
+Để quản lý dự án Agile, chúng tôi dùng Jira để theo dõi tiến độ.
 
 Giờ tôi xin mời đồng nghiệp Frontend Demo prototype của hệ thống."
 
