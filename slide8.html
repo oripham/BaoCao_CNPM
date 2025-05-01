@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kiến Trúc Hệ Thống - Báo Cáo Môn Công Nghệ Phần Mềm</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
@@ -15,6 +17,7 @@
             padding: 0;
             overflow: hidden;
         }
+
         .slide-container {
             width: 1280px;
             min-height: 720px;
@@ -24,6 +27,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .header-bg {
             position: absolute;
             top: 0;
@@ -33,16 +37,19 @@
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             z-index: 0;
         }
+
         .content {
             position: relative;
             z-index: 1;
             padding: 2rem;
         }
+
         .title {
             color: white;
             padding: 1.5rem 2rem;
             text-align: center;
         }
+
         .main-content {
             background-color: rgba(255, 255, 255, 0.97);
             border-radius: 12px;
@@ -52,6 +59,7 @@
             position: relative;
             z-index: 1;
         }
+
         .architecture-tier {
             background-color: #f8fafc;
             border-radius: 10px;
@@ -64,27 +72,33 @@
             border-left: 5px solid;
             transition: transform 0.3s ease;
         }
+
         .architecture-tier:hover {
             transform: translateX(5px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
+
         .tier-frontend {
             border-left-color: #3b82f6;
             animation-delay: 0.2s;
         }
+
         .tier-backend {
             border-left-color: #10b981;
             animation-delay: 0.4s;
         }
+
         .tier-database {
             border-left-color: #d4af37;
             animation-delay: 0.6s;
         }
+
         .tier-header {
             display: flex;
             align-items: center;
             margin-bottom: 0.8rem;
         }
+
         .tier-icon {
             width: 50px;
             height: 50px;
@@ -97,26 +111,32 @@
             flex-shrink: 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
+
         .tier-icon-frontend {
             background: linear-gradient(135deg, #1e40af, #3b82f6);
         }
+
         .tier-icon-backend {
             background: linear-gradient(135deg, #065f46, #10b981);
         }
+
         .tier-icon-database {
             background: linear-gradient(135deg, #b45309, #d4af37);
         }
+
         .tier-title {
             font-size: 1.4rem;
             font-weight: 600;
             color: #1e3a8a;
         }
+
         .features-list {
             display: flex;
             flex-wrap: wrap;
             gap: 0.8rem;
             margin-top: 0.8rem;
         }
+
         .feature-item {
             display: flex;
             align-items: center;
@@ -128,14 +148,17 @@
             transform: translateY(0);
             transition: all 0.3s ease;
         }
+
         .feature-item:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .feature-icon {
             margin-right: 0.8rem;
             font-size: 1.1rem;
         }
+
         .architecture-diagram {
             margin-top: 1.5rem;
             background-color: #f8fafc;
@@ -151,11 +174,13 @@
             animation: fadeIn 1s forwards;
             animation-delay: 0.8s;
         }
+
         .diagram-container {
             position: relative;
             width: 100%;
             height: 100%;
         }
+
         .tier-block {
             position: absolute;
             width: 200px;
@@ -171,24 +196,28 @@
             padding: 0.5rem;
             border: 2px solid;
         }
+
         .tier-block-frontend {
             left: 10%;
             top: 50%;
             transform: translateY(-50%);
             border-color: #3b82f6;
         }
+
         .tier-block-backend {
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             border-color: #10b981;
         }
+
         .tier-block-database {
             right: 10%;
             top: 50%;
             transform: translateY(-50%);
             border-color: #d4af37;
         }
+
         .connection-line {
             position: absolute;
             height: 3px;
@@ -196,15 +225,18 @@
             background: linear-gradient(to right, #3b82f6, #10b981);
             z-index: 0;
         }
+
         .connection-line-1 {
             left: calc(10% + 200px);
             width: calc(40% - 220px);
         }
+
         .connection-line-2 {
             left: calc(50% + 100px);
             width: calc(40% - 120px);
             background: linear-gradient(to right, #10b981, #d4af37);
         }
+
         .connection-arrow {
             position: absolute;
             top: 50%;
@@ -213,18 +245,22 @@
             color: #3b82f6;
             z-index: 1;
         }
+
         .arrow-1 {
             left: calc(30% - 8px);
         }
+
         .arrow-2 {
             left: calc(70% - 8px);
             color: #10b981;
         }
+
         .decorative-element {
             position: absolute;
             opacity: 0.05;
             z-index: 0;
         }
+
         .page-number {
             position: absolute;
             bottom: 15px;
@@ -235,6 +271,7 @@
             background-color: rgba(255, 255, 255, 0.7);
             border-radius: 15px;
         }
+
         .hotel-logo {
             position: absolute;
             bottom: 15px;
@@ -242,48 +279,55 @@
             font-size: 24px;
             color: #1e3a8a;
         }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
         }
+
         .gold-accent {
             color: #d4af37;
         }
     </style>
 </head>
+
 <body>
     <div class="slide-container">
         <div class="header-bg"></div>
-        
+
         <!-- Decorative elements -->
         <i class="fas fa-sitemap decorative-element text-9xl" style="top: 40%; left: 5%;"></i>
         <i class="fas fa-database decorative-element text-9xl" style="bottom: 15%; right: 8%;"></i>
-        
+
         <div class="content">
             <div class="title">
                 <h1 class="text-3xl font-bold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">KIẾN TRÚC HỆ THỐNG</h1>
             </div>
-            
+
             <div class="main-content">
-                <h2 class="text-2xl font-semibold mb-5 text-blue-800" style="border-bottom: 2px solid #d4af37; padding-bottom: 0.5rem;">
+                <h2 class="text-2xl font-semibold mb-5 text-blue-800"
+                    style="border-bottom: 2px solid #d4af37; padding-bottom: 0.5rem;">
                     <i class="fas fa-layer-group mr-2 gold-accent"></i>
                     Thiết kế kiến trúc 3 tầng
                 </h2>
-                
+
                 <div class="grid grid-cols-3 gap-4">
                     <!-- Frontend Tier -->
                     <div class="architecture-tier tier-frontend">
@@ -294,19 +338,19 @@
                             <h3 class="tier-title">Tầng trình bày</h3>
                         </div>
                         <div class="tier-subtitle text-blue-600 font-medium">(Frontend)</div>
-                        
+
                         <div class="features-list">
-                            <div class="feature-item">
-                                <i class="fas fa-laptop feature-icon text-blue-500"></i>
-                                <span>Giao diện web responsive</span>
-                            </div>
                             <div class="feature-item">
                                 <i class="fas fa-tachometer-alt feature-icon text-blue-500"></i>
                                 <span>Giao diện quản trị</span>
                             </div>
+                            <div class="feature-item">
+                                <i class="fas fa-user-cog feature-icon text-blue-500"></i>
+                                <span>Giao diện nhân viên</span>
+                            </div>
                         </div>
                     </div>
-                    
+
                     <!-- Backend Tier -->
                     <div class="architecture-tier tier-backend">
                         <div class="tier-header">
@@ -316,7 +360,7 @@
                             <h3 class="tier-title">Tầng logic</h3>
                         </div>
                         <div class="tier-subtitle text-green-600 font-medium">(Backend)</div>
-                        
+
                         <div class="features-list">
                             <div class="feature-item">
                                 <i class="fas fa-server feature-icon text-green-500"></i>
@@ -326,13 +370,9 @@
                                 <i class="fas fa-code-branch feature-icon text-green-500"></i>
                                 <span>Xử lý nghiệp vụ</span>
                             </div>
-                            <div class="feature-item">
-                                <i class="fas fa-exchange-alt feature-icon text-green-500"></i>
-                                <span>Quản lý giao dịch</span>
-                            </div>
                         </div>
                     </div>
-                    
+
                     <!-- Database Tier -->
                     <div class="architecture-tier tier-database">
                         <div class="tier-header">
@@ -342,15 +382,11 @@
                             <h3 class="tier-title">Tầng dữ liệu</h3>
                         </div>
                         <div class="tier-subtitle text-yellow-600 font-medium">(Database)</div>
-                        
+
                         <div class="features-list">
                             <div class="feature-item">
                                 <i class="fas fa-table feature-icon text-yellow-600"></i>
                                 <span>SQL Server</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-memory feature-icon text-yellow-600"></i>
-                                <span>Bộ nhớ đệm (Redis)</span>
                             </div>
                             <div class="feature-item">
                                 <i class="fas fa-cloud feature-icon text-yellow-600"></i>
@@ -359,14 +395,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Architecture Diagram -->
                 <div class="architecture-diagram">
                     <div class="diagram-container">
                         <!-- Connection lines -->
                         <div class="connection-line connection-line-1"></div>
                         <div class="connection-line connection-line-2"></div>
-                        
+
                         <!-- Arrows -->
                         <div class="connection-arrow arrow-1">
                             <i class="fas fa-chevron-right"></i>
@@ -374,36 +410,38 @@
                         <div class="connection-arrow arrow-2">
                             <i class="fas fa-chevron-right"></i>
                         </div>
-                        
+
                         <!-- Architecture blocks -->
                         <div class="tier-block tier-block-frontend">
                             <i class="fas fa-desktop text-blue-500 text-2xl mb-2"></i>
                             <div class="font-medium">Giao diện người dùng</div>
                         </div>
-                        
+
                         <div class="tier-block tier-block-backend">
                             <i class="fas fa-cogs text-green-500 text-2xl mb-2"></i>
                             <div class="font-medium">Xử lý nghiệp vụ</div>
                         </div>
-                        
+
                         <div class="tier-block tier-block-database">
                             <i class="fas fa-database text-yellow-600 text-2xl mb-2"></i>
                             <div class="font-medium">Lưu trữ dữ liệu</div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="text-center mt-4 text-gray-600 text-sm italic">
-                    Kiến trúc 3 tầng giúp tách biệt rõ ràng các chức năng, dễ dàng mở rộng và bảo trì, phù hợp với phương pháp Agile
+                    Kiến trúc 3 tầng giúp tách biệt rõ ràng các chức năng, dễ dàng mở rộng và bảo trì, phù hợp với
+                    phương pháp Agile
                 </div>
             </div>
-            
+
             <div class="hotel-logo">
                 <i class="fas fa-hotel gold-accent"></i> <span class="text-blue-800 font-semibold">HMS</span>
             </div>
-            
+
             <div class="page-number">8/16</div>
         </div>
     </div>
 </body>
+
 </html>

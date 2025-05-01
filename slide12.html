@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Prototype - Báo Cáo Môn Công Nghệ Phần Mềm</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
@@ -15,6 +17,7 @@
             padding: 0;
             overflow: hidden;
         }
+
         .slide-container {
             width: 1280px;
             min-height: 720px;
@@ -24,6 +27,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .header-bg {
             position: absolute;
             top: 0;
@@ -33,16 +37,19 @@
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             z-index: 0;
         }
+
         .content {
             position: relative;
             z-index: 1;
             padding: 2rem;
         }
+
         .title {
             color: white;
             padding: 1.5rem 2rem;
             text-align: center;
         }
+
         .main-content {
             background-color: rgba(255, 255, 255, 0.97);
             border-radius: 12px;
@@ -52,9 +59,11 @@
             position: relative;
             z-index: 1;
         }
+
         .gold-accent {
             color: #d4af37;
         }
+
         .prototype-container {
             display: flex;
             justify-content: center;
@@ -64,6 +73,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .prototype-screen {
             position: absolute;
             width: 90%;
@@ -77,21 +87,25 @@
             overflow: hidden;
             border: 1px solid #e2e8f0;
         }
+
         .prototype-screen.active {
             opacity: 1;
             transform: translateX(0);
             z-index: 2;
         }
+
         .prototype-screen.previous {
             opacity: 0.6;
             transform: translateX(-50px) scale(0.9);
             z-index: 1;
         }
+
         .prototype-screen.next {
             opacity: 0.6;
             transform: translateX(50px) scale(0.9);
             z-index: 1;
         }
+
         .screen-header {
             height: 40px;
             background: linear-gradient(to right, #1e3a8a, #3b82f6);
@@ -102,18 +116,22 @@
             border-radius: 12px 12px 0 0;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         .screen-icon {
             margin-right: 0.5rem;
         }
+
         .screen-title {
             font-weight: 600;
             font-size: 0.9rem;
         }
+
         .screen-body {
             padding: 1rem;
             height: calc(100% - 40px);
             overflow: auto;
         }
+
         .dashboard-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -121,6 +139,7 @@
             gap: 1rem;
             height: 100%;
         }
+
         .dashboard-card {
             background-color: white;
             border-radius: 8px;
@@ -129,6 +148,7 @@
             display: flex;
             flex-direction: column;
         }
+
         .card-header {
             display: flex;
             align-items: center;
@@ -136,11 +156,13 @@
             padding-bottom: 0.5rem;
             border-bottom: 1px solid #e2e8f0;
         }
+
         .card-title {
             font-weight: 600;
             color: #1e3a8a;
             flex-grow: 1;
         }
+
         .rooms-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -148,6 +170,7 @@
             margin-top: 0.5rem;
             flex-grow: 1;
         }
+
         .room-item {
             height: 60px;
             border-radius: 6px;
@@ -159,35 +182,42 @@
             cursor: pointer;
             transition: all 0.2s;
         }
+
         .room-item:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .room-occupied {
             background-color: #fee2e2;
             border: 1px solid #fecaca;
             color: #b91c1c;
         }
+
         .room-available {
             background-color: #dcfce7;
             border: 1px solid #bbf7d0;
             color: #15803d;
         }
+
         .room-cleaning {
             background-color: #fef3c7;
             border: 1px solid #fde68a;
             color: #b45309;
         }
+
         .room-maintenance {
             background-color: #e0f2fe;
             border: 1px solid #bae6fd;
             color: #0369a1;
         }
+
         .stats-container {
             display: flex;
             justify-content: space-between;
             gap: 0.5rem;
         }
+
         .stat-item {
             background-color: white;
             border-radius: 8px;
@@ -196,16 +226,19 @@
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
+
         .stat-label {
             font-size: 0.7rem;
             color: #64748b;
             margin-bottom: 0.3rem;
         }
+
         .stat-value {
             font-size: 1.2rem;
             font-weight: 600;
             color: #1e3a8a;
         }
+
         .chart-placeholder {
             width: 100%;
             height: 150px;
@@ -217,15 +250,18 @@
             color: #1e3a8a;
             margin-top: 0.5rem;
         }
+
         .booking-form {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
             height: 100%;
         }
+
         .form-group {
             margin-bottom: 1rem;
         }
+
         .form-label {
             display: block;
             font-size: 0.8rem;
@@ -233,6 +269,7 @@
             margin-bottom: 0.3rem;
             color: #475569;
         }
+
         .form-control {
             width: 100%;
             padding: 0.5rem;
@@ -240,6 +277,7 @@
             border-radius: 6px;
             font-size: 0.9rem;
         }
+
         .reservation-calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -251,6 +289,7 @@
             border: 1px solid #e2e8f0;
             height: 300px;
         }
+
         .calendar-header {
             grid-column: span 7;
             text-align: center;
@@ -259,6 +298,7 @@
             color: #1e3a8a;
             border-bottom: 1px solid #e2e8f0;
         }
+
         .weekday {
             text-align: center;
             font-size: 0.7rem;
@@ -266,6 +306,7 @@
             color: #64748b;
             padding: 0.3rem 0;
         }
+
         .calendar-day {
             text-align: center;
             font-size: 0.8rem;
@@ -274,24 +315,29 @@
             cursor: pointer;
             transition: all 0.2s;
         }
+
         .calendar-day:hover {
             background-color: #dbeafe;
             color: #1e3a8a;
         }
+
         .calendar-day.booked {
             background-color: #fee2e2;
             color: #b91c1c;
         }
+
         .calendar-day.selected {
             background-color: #1e3a8a;
             color: white;
         }
+
         .management-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
             height: 100%;
         }
+
         .report-chart {
             background-color: white;
             border-radius: 8px;
@@ -299,6 +345,7 @@
             padding: 1rem;
             height: 100%;
         }
+
         .staff-list {
             background-color: white;
             border-radius: 8px;
@@ -307,6 +354,7 @@
             height: 100%;
             overflow: auto;
         }
+
         .staff-item {
             display: flex;
             align-items: center;
@@ -314,13 +362,16 @@
             border-bottom: 1px solid #e2e8f0;
             transition: all 0.2s;
         }
+
         .staff-item:last-child {
             border-bottom: none;
         }
+
         .staff-item:hover {
             background-color: #f1f5f9;
             border-radius: 6px;
         }
+
         .staff-avatar {
             width: 40px;
             height: 40px;
@@ -333,36 +384,44 @@
             color: #1e3a8a;
             font-weight: 600;
         }
+
         .staff-info {
             flex-grow: 1;
         }
+
         .staff-name {
             font-weight: 500;
             color: #334155;
         }
+
         .staff-position {
             font-size: 0.75rem;
             color: #64748b;
         }
+
         .staff-status {
             padding: 0.3rem 0.6rem;
             border-radius: 20px;
             font-size: 0.7rem;
             font-weight: 500;
         }
+
         .status-active {
             background-color: #dcfce7;
             color: #15803d;
         }
+
         .status-break {
             background-color: #fef3c7;
             color: #b45309;
         }
+
         .nav-dots {
             display: flex;
             justify-content: center;
             margin-top: 1rem;
         }
+
         .nav-dot {
             width: 12px;
             height: 12px;
@@ -372,16 +431,19 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+
         .nav-dot.active {
             background-color: #1e3a8a;
             transform: scale(1.2);
         }
+
         .control-buttons {
             display: flex;
             justify-content: center;
             margin-top: 1rem;
             gap: 1rem;
         }
+
         .control-btn {
             padding: 0.5rem 1rem;
             border-radius: 8px;
@@ -394,13 +456,16 @@
             align-items: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .control-btn:hover {
             background-color: #1e40af;
             transform: translateY(-2px);
         }
+
         .control-btn i {
             margin: 0 0.5rem;
         }
+
         .screen-caption {
             position: absolute;
             bottom: 10px;
@@ -414,11 +479,13 @@
             font-weight: 500;
             z-index: 3;
         }
+
         .decorative-element {
             position: absolute;
             opacity: 0.05;
             z-index: 0;
         }
+
         .page-number {
             position: absolute;
             bottom: 15px;
@@ -429,6 +496,7 @@
             background-color: rgba(255, 255, 255, 0.7);
             border-radius: 15px;
         }
+
         .hotel-logo {
             position: absolute;
             bottom: 15px;
@@ -438,285 +506,149 @@
         }
     </style>
 </head>
+
 <body>
     <div class="slide-container">
         <div class="header-bg"></div>
-        
+
         <!-- Decorative elements -->
         <i class="fas fa-laptop-code decorative-element text-9xl" style="top: 40%; left: 5%;"></i>
         <i class="fas fa-mobile-alt decorative-element text-9xl" style="bottom: 15%; right: 8%;"></i>
-        
+
         <div class="content">
             <div class="title">
                 <h1 class="text-3xl font-bold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">DEMO PROTOTYPE</h1>
             </div>
-            
+
             <div class="main-content">
-                <h2 class="text-2xl font-semibold mb-4 text-blue-800" style="border-bottom: 2px solid #d4af37; padding-bottom: 0.5rem;">
-                    <i class="fas fa-desktop mr-2 gold-accent"></i>
-                    Một số giao diện mẫu
-                </h2>
-                
                 <div class="prototype-container">
-                    <!-- Dashboard Screen -->
+
                     <div class="prototype-screen active" id="screen1">
                         <div class="screen-header">
-                            <i class="fas fa-tachometer-alt screen-icon"></i>
-                            <div class="screen-title">Dashboard tổng quan</div>
+                            <i class="fas fa-chart-line screen-icon"></i>
+                            <div class="screen-title">Màn hình 1: Khách hàng (Customers)</div>
                         </div>
+
                         <div class="screen-body">
-                            <div class="dashboard-grid">
-                                <!-- Room Status Overview -->
-                                <div class="dashboard-card" style="grid-row: span 2;">
-                                    <div class="card-header">
-                                        <div class="card-title">Trạng thái phòng</div>
-                                        <div class="text-blue-700">
-                                            <i class="fas fa-sync-alt"></i>
-                                        </div>
-                                    </div>
-                                    <div class="stats-container">
-                                        <div class="stat-item">
-                                            <div class="stat-label">Tổng phòng</div>
-                                            <div class="stat-value">50</div>
-                                        </div>
-                                        <div class="stat-item">
-                                            <div class="stat-label">Đã đặt</div>
-                                            <div class="stat-value text-red-600">32</div>
-                                        </div>
-                                        <div class="stat-item">
-                                            <div class="stat-label">Còn trống</div>
-                                            <div class="stat-value text-green-600">18</div>
-                                        </div>
-                                        <div class="stat-item">
-                                            <div class="stat-label">Đang dọn</div>
-                                            <div class="stat-value text-amber-600">5</div>
-                                        </div>
-                                    </div>
-                                    <div class="rooms-grid">
-                                        <!-- Row 1 -->
-                                        <div class="room-item room-occupied">
-                                            <div>101</div>
-                                            <div class="text-xs">Đã đặt</div>
-                                        </div>
-                                        <div class="room-item room-occupied">
-                                            <div>102</div>
-                                            <div class="text-xs">Đã đặt</div>
-                                        </div>
-                                        <div class="room-item room-available">
-                                            <div>103</div>
-                                            <div class="text-xs">Trống</div>
-                                        </div>
-                                        <div class="room-item room-cleaning">
-                                            <div>104</div>
-                                            <div class="text-xs">Đang dọn</div>
-                                        </div>
-                                        <div class="room-item room-occupied">
-                                            <div>105</div>
-                                            <div class="text-xs">Đã đặt</div>
-                                        </div>
-                                        
-                                        <!-- Row 2 -->
-                                        <div class="room-item room-available">
-                                            <div>201</div>
-                                            <div class="text-xs">Trống</div>
-                                        </div>
-                                        <div class="room-item room-maintenance">
-                                            <div>202</div>
-                                            <div class="text-xs">Bảo trì</div>
-                                        </div>
-                                        <div class="room-item room-occupied">
-                                            <div>203</div>
-                                            <div class="text-xs">Đã đặt</div>
-                                        </div>
-                                        <div class="room-item room-occupied">
-                                            <div>204</div>
-                                            <div class="text-xs">Đã đặt</div>
-                                        </div>
-                                        <div class="room-item room-available">
-                                            <div>205</div>
-                                            <div class="text-xs">Trống</div>
-                                        </div>
-                                        
-                                        <!-- Row 3 -->
-                                        <div class="room-item room-occupied">
-                                            <div>301</div>
-                                            <div class="text-xs">Đã đặt</div>
-                                        </div>
-                                        <div class="room-item room-occupied">
-                                            <div>302</div>
-                                            <div class="text-xs">Đã đặt</div>
-                                        </div>
-                                        <div class="room-item room-cleaning">
-                                            <div>303</div>
-                                            <div class="text-xs">Đang dọn</div>
-                                        </div>
-                                        <div class="room-item room-available">
-                                            <div>304</div>
-                                            <div class="text-xs">Trống</div>
-                                        </div>
-                                        <div class="room-item room-occupied">
-                                            <div>305</div>
-                                            <div class="text-xs">Đã đặt</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Occupancy Chart -->
-                                <div class="dashboard-card">
-                                    <div class="card-header">
-                                        <div class="card-title">Tỷ lệ lấp đầy</div>
-                                        <div class="text-blue-700">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </div>
-                                    </div>
-                                    <div class="chart-placeholder">
-                                        <div class="text-center">
-                                            <i class="fas fa-chart-pie text-3xl mb-2"></i>
-                                            <div>Biểu đồ tỷ lệ lấp đầy</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Revenue Chart -->
-                                <div class="dashboard-card">
-                                    <div class="card-header">
-                                        <div class="card-title">Doanh thu tuần qua</div>
-                                        <div class="text-blue-700">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </div>
-                                    </div>
-                                    <div class="chart-placeholder">
-                                        <div class="text-center">
-                                            <i class="fas fa-chart-line text-3xl mb-2"></i>
-                                            <div>Biểu đồ doanh thu</div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <img src="images/customer.png" alt="Prototype Screen" class="">
+                        </div>
+
+                    </div>
+
+                    <div class="prototype-screen active" id="screen2">
+                        <div class="screen-header">
+                            <i class="fas fa-chart-line screen-icon"></i>
+                            <div class="screen-title">Màn hình 2: Phòng (Rooms)</div>
+                        </div>
+
+                        <div class="screen-body">
+                            <img src="images/room.png" alt="Prototype Screen" class="">
+                        </div>
+
+                    </div>
+
+                    <div class="prototype-screen active" id="screen3">
+                        <div class="screen-header">
+                            <i class="fas fa-chart-line screen-icon"></i>
+                            <div class="screen-title">Màn hình 3: Đặt phòng (Bookings)</div>
+                        </div>
+
+                        <div class="screen-body">
+                            <img src="images/booking-channel.png" alt="Prototype Screen" class="">
+                        </div>
+
+                    </div>
+
+                    <div class="prototype-screen active" id="screen4">
+                        <div class="screen-header">
+                            <i class="fas fa-chart-line screen-icon"></i>
+                            <div class="screen-title">Màn hình 3: Đặt phòng (Bookings)</div>
+                        </div>
+
+                        <div class="screen-body">
+                            <img src="images/bookings.png" alt="Prototype Screen" class="">
+                        </div>
+
+                    </div>
+
+                    <div class="prototype-screen active" id="screen5">
+                        <div class="screen-header">
+                            <i class="fas fa-chart-line screen-icon"></i>
+                            <div class="screen-title">Màn hình 4: Thanh toán (Payments)
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Booking Screen -->
-                    <div class="prototype-screen next" id="screen2">
-                        <div class="screen-header">
-                            <i class="fas fa-calendar-check screen-icon"></i>
-                            <div class="screen-title">Đặt phòng</div>
-                        </div>
+
                         <div class="screen-body">
-                            <div class="booking-form">
-                                <div>
-                                    <h3 class="text-lg font-semibold mb-3 text-blue-800">Thông tin đặt phòng</h3>
-                                    
-                                    <div class="form-group">
-                                        <label class="form-label">Họ và tên khách hàng</label>
-                                        <input type="text" class="form-control" placeholder="Nguyễn Văn A">
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="form-label">Số điện thoại</label>
-                                        <input type="text" class="form-control" placeholder="0912345678">
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" class="form-control" placeholder="example@email.com">
-                                    </div>
-                                    
-                                    <div class="grid grid-cols-2 gap-3">
-                                        <div class="form-group">
-                                            <label class="form-label">Ngày nhận phòng</label>
-                                            <input type="date" class="form-control">
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label class="form-label">Ngày trả phòng</label>
-                                            <input type="date" class="form-control">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="grid grid-cols-2 gap-3">
-                                        <div class="form-group">
-                                            <label class="form-label">Loại phòng</label>
-                                            <select class="form-control">
-                                                <option>Standard</option>
-                                                <option>Deluxe</option>
-                                                <option>Suite</option>
-                                            </select>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label class="form-label">Số người</label>
-                                            <select class="form-control">
-                                                <option>1 người</option>
-                                                <option>2 người</option>
-                                                <option>3 người</option>
-                                                <option>4 người</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="form-label">Ghi chú đặc biệt</label>
-                                        <textarea class="form-control" rows="3" placeholder="Yêu cầu thêm..."></textarea>
-                                    </div>
-                                    
-                                    <button class="w-full mt-3 bg-blue-700 text-white py-2 rounded-lg font-medium hover:bg-blue-800 transition duration-300">
-                                        Xác nhận đặt phòng
-                                    </button>
-                                </div>
-                                
-                                <div>
-                                    <h3 class="text-lg font-semibold mb-3 text-blue-800">Lịch đặt phòng</h3>
-                                    
-                                    <div class="reservation-calendar">
-                                        <div class="calendar-header">Tháng 5, 2024</div>
-                                        
-                                        <!-- Weekday headers -->
-                                        <div class="weekday">CN</div>
-                                        <div class="weekday">T2</div>
-                                        <div class="weekday">T3</div>
-                                        <div class="weekday">T4</div>
-                                        <div class="weekday">T5</div>
-                                        <div class="weekday">T6</div>
-                                        <div class="weekday">T7</div>
-                                        
-                                        <!-- Days -->
-                                        <div class="calendar-day">30</div>
-                                        <div class="calendar-day">1</div>
-                                        <div class="calendar-day">2</div>
-                                        <div class="calendar-day booked">3</div>
-                                        <div class="calendar-day booked">4</div>
-                                        <div class="calendar-day booked">5</div>
-                                        <div class="calendar-day">6</div>
-                                        
-                                        <div class="calendar-day">7</div>
-                                        <div class="calendar-day">8</div>
-                                        <div class="calendar-day booked">9</div>
-                                        <div class="calendar-day booked">10</div>
-                                        <div class="calendar-day">11</div>
-                                        <div class="calendar-day">12</div>
-                                        <div class="calendar-day">13</div>
-                                        
-                                        <div class="calendar-day booked">14</div>
-                                        <div class="calendar-day booked">15</div>
-                                        <div class="calendar-day booked">16</div>
-                                        <div class="calendar-day">17</div>
-                                        <div class="calendar-day">18</div>
-                                        <div class="calendar-day selected">19</div>
-                                        <div class="calendar-day selected">20</div>
-                                        
-                                        <div class="calendar-day selected">21</div>
-                                        <div class="calendar-day">22</div>
-                                        <div class="calendar-day">23</div>
-                                        <div class="calendar-day booked">24</div>
-                                        <div class="calendar-day booked">25</div>
-                                        <div class="calendar-day booked">26</div>
-                                        <div class="calendar-day">27</div>
-                                        
-                                        <div class="calendar-day">28</div>
-                                        <div class="calendar-day">29</div>
-                                        <div class="calendar-day">30</div>
-                                        <div class="calendar-day">31</div>
-                                        <div class="calendar-day">1</div>
-                                        <div class="calendar-day">2</div>
-                                        <div class="calendar-day">3</div>
+                            <img src="images/payments.png" alt="Prototype Screen" class="">
+                        </div>
+
+                    </div>
+
+                    <div class="prototype-screen active" id="screen6">
+                        <div class="screen-header">
+                            <i class="fas fa-chart-line screen-icon"></i>
+                            <div class="screen-title">Màn hình 5: Người dùng (Users)
+                            </div>
+                        </div>
+
+                        <div class="screen-body">
+                            <img src="images/user.png" alt="Prototype Screen" class="">
+                        </div>
+
+                    </div>
+
+                    <div class="prototype-screen active" id="screen7">
+                        <div class="screen-header">
+                            <i class="fas fa-chart-line screen-icon"></i>
+                            <div class="screen-title">Màn hình 6: Bảng điều khiển (Dashboard)
+                            </div>
+                        </div>
+
+                        <div class="screen-body">
+                            <img src="images/dashboard.png" alt="Prototype Screen" class="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="prevScreen()"
+                class="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-800 bg-white border border-blue-500 px-3 py-1 rounded-full shadow hover:bg-blue-100 z-10"><i
+                    class="fas fa-chevron-left"></i></button>
+            <button onclick="nextScreen()"
+                class="absolute right-4 top-1/2 transform -translate-y-1/2 text-blue-800 bg-white border border-blue-500 px-3 py-1 rounded-full shadow hover:bg-blue-100 z-10"><i
+                    class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+    <script>
+        const screens = document.querySelectorAll('.prototype-screen');
+        let currentIndex = 0;
+
+        function updateScreens() {
+            screens.forEach((screen, index) => {
+                screen.classList.remove('active', 'next', 'previous');
+                if (index === currentIndex) screen.classList.add('active');
+                else if (index < currentIndex) screen.classList.add('previous');
+                else screen.classList.add('next');
+            });
+        }
+
+        function nextScreen() {
+            if (currentIndex < screens.length - 1) {
+                currentIndex++;
+                updateScreens();
+            }
+        }
+
+        function prevScreen() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateScreens();
+            }
+        }
+
+        updateScreens();
+    </script>
+</body>
+
+</html>
