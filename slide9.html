@@ -3,242 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Chất Lượng - Báo Cáo Môn Công Nghệ Phần Mềm</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Quản Lý Chất Lượng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(to bottom right, #f0f9ff, #ffffff);
+        /* Reset & Base Styles */
+        * {
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        
+        body {
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        /* Slide Container */
         .slide-container {
-            width: 1280px;
-            min-height: 720px;
-            margin: 0 auto;
-            background-color: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             position: relative;
-            overflow: hidden;
+            width: 1024px;
+            height: 800px;
+            background-color: white;
+            overflow: visible;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 6px;
         }
+        
+        /* Header Background */
         .header-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 120px;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            height: 80px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+            z-index: 1;
+        }
+        
+        /* Decorative Elements */
+        .decorative-element {
+            position: absolute;
+            opacity: 0.06;
+            color: #1e3a8a;
+            transform: rotate(-15deg);
             z-index: 0;
         }
+        
+        /* Main Content */
         .content {
             position: relative;
-            z-index: 1;
-            padding: 2rem;
+            z-index: 2;
+            padding: 20px 40px;
+            height: 100%;
         }
+        
+        /* Title */
         .title {
             color: white;
-            padding: 1.5rem 2rem;
             text-align: center;
+            padding: 17px 0;
+            margin-bottom: 15px;
         }
+        
+        .title h1 {
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+        
+        /* Main Content */
         .main-content {
-            background-color: rgba(255, 255, 255, 0.97);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 1rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            position: relative;
-            z-index: 1;
+            background-color: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 8px;
+            height: 85%;
+            overflow-y: auto;
         }
+        
+        .main-content h2 {
+            color: #1e3a8a;
+            margin-bottom: 20px;
+        }
+        
         .gold-accent {
             color: #d4af37;
         }
+        
+        /* Grid Layout */
+        .grid {
+            display: grid;
+        }
+        
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+            height: 88%;
+        }
+        
+        .gap-4 {
+            gap: 0.8rem;
+        }
+        
+        /* Sections */
         .quality-section {
-            background-color: #f8fafc;
-            border-radius: 10px;
-            padding: 1.2rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            opacity: 0;
-            animation: fadeInUp 0.6s forwards;
-            border-left: 5px solid;
-            transition: all 0.3s ease;
+            background-color: white;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+            border-left: 4px solid #3b82f6;
+            height: calc(100% - 15px);
+            display: flex;
+            flex-direction: column;
         }
-        .quality-section:hover {
-            transform: translateX(5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        }
-        .testing-section {
-            border-left-color: #3b82f6;
-            animation-delay: 0.2s;
-        }
-        .cicd-section {
-            border-left-color: #10b981;
-            animation-delay: 0.4s;
-        }
-        .code-quality-section {
-            border-left-color: #d4af37;
-            animation-delay: 0.6s;
-        }
-        .metrics-section {
-            border-left-color: #ef4444;
-            animation-delay: 0.8s;
-        }
+        
         .section-header {
             display: flex;
             align-items: center;
-            margin-bottom: 0.8rem;
+            margin-bottom: 8px;
         }
+        
         .section-icon {
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            color: white;
-            margin-right: 1rem;
-            flex-shrink: 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-        .icon-testing {
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-        }
-        .icon-cicd {
-            background: linear-gradient(135deg, #065f46, #10b981);
-        }
-        .icon-code {
-            background: linear-gradient(135deg, #b45309, #d4af37);
-        }
-        .icon-metrics {
-            background: linear-gradient(135deg, #b91c1c, #ef4444);
-        }
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #1e3a8a;
-        }
-        .quality-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 0.8rem;
-        }
-        .quality-item {
-            display: flex;
-            align-items: center;
-            background-color: white;
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            width: calc(33.33% - 0.6rem);
-            transition: all 0.3s ease;
-        }
-        .quality-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .item-icon {
-            margin-right: 0.8rem;
-            font-size: 1.1rem;
-        }
-        .metrics-container {
-            display: grid;
-            grid-template-columns: 60% 40%;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .chart-container {
-            height: 200px;
-            width: 100%;
-        }
-        .metrics-list {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .metric-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 0.8rem;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        .metric-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .metric-icon {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            margin-right: 12px;
+            font-size: 1.2rem;
             color: white;
-            margin-right: 1rem;
-            flex-shrink: 0;
         }
+        
+        .icon-testing {
+            background-color: #3b82f6;
+        }
+        
+        .icon-results {
+            background-color: #8b5cf6;
+        }
+        
+        .icon-code {
+            background-color: #d97706;
+        }
+        
+        .icon-metrics {
+            background-color: #059669;
+        }
+        
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        /* Quality Items */
+        .quality-items, .quality-items1 {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+        
+        .quality-item, .quality-item1 {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 6px;
+            border-radius: 6px;
+            background-color: #f9fafb;
+        }
+        
+        .item-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1rem;
+            background-color: #e5e7eb;
+        }
+        
+        .text-blue-500 {
+            color: #3b82f6;
+        }
+        
+        .text-purple-500 {
+            color: #8b5cf6;
+        }
+        
+        .text-yellow-600 {
+            color: #d97706;
+        }
+        
+        .text-gray-500 {
+            color: #6b7280;
+        }
+        
+        .font-medium {
+            font-weight: 500;
+        }
+        
+        .text-xs {
+            font-size: 0.7rem;
+            line-height: 1.3;
+        }
+        
+        /* Test Results */
+        .test-result-content {
+            flex: 1;
+        }
+        
+        .test-result-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .test-result-stats {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            font-size: 0.7rem;
+            margin-bottom: 3px;
+        }
+        
+        .test-stat {
+            padding: 2px 6px;
+            border-radius: 4px;
+            background-color: #f3f4f6;
+        }
+        
+        .stat-pass {
+            color: #10b981;
+        }
+        
+        .stat-fail {
+            color: #ef4444;
+        }
+        
+        .test-progress {
+            height: 6px;
+            width: 100%;
+            background-color: #f3f4f6;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            border-radius: 3px;
+        }
+        
+        .progress-pass {
+            background-color: #10b981;
+        }
+        
+        /* Metrics */
+        .metrics-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+        
+        .metric-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            border-radius: 6px;
+            background-color: #f9fafb;
+        }
+        
+        .metric-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1rem;
+            color: white;
+        }
+        
         .icon-coverage {
-            background: linear-gradient(135deg, #0369a1, #0ea5e9);
+            background-color: #10b981;
         }
+        
         .icon-bug {
-            background: linear-gradient(135deg, #b91c1c, #ef4444);
+            background-color: #ef4444;
         }
+        
         .icon-response {
-            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            background-color: #f59e0b;
         }
+        
         .metric-value {
             font-weight: 600;
-            font-size: 1.1rem;
-            color: #1e3a8a;
+            font-size: 0.95rem;
+            margin-right: 8px;
         }
+        
         .metric-target {
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-left: 0.5rem;
-            background-color: #f0f9ff;
-            color: #0369a1;
-            border: 1px solid #bae6fd;
+            font-size: 0.75rem;
+            color: #6b7280;
+            background-color: #e5e7eb;
+            padding: 2px 6px;
+            border-radius: 4px;
         }
-        .decorative-element {
-            position: absolute;
-            opacity: 0.05;
-            z-index: 0;
-        }
-        .page-number {
-            position: absolute;
-            bottom: 15px;
-            right: 20px;
-            font-size: 14px;
-            color: #666;
-            padding: 5px 10px;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 15px;
-        }
+        
+        /* Logo and Page Number */
         .hotel-logo {
             position: absolute;
-            bottom: 15px;
-            left: 20px;
-            font-size: 24px;
-            color: #1e3a8a;
+            bottom: 20px;
+            left: 40px;
+            font-size: 1.2rem;
         }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        
+        /* Text Utilities */
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+        
+        .mt-1 {
+            margin-top: 0.25rem;
+        }
+        
+        .mt-2 {
+            margin-top: 0.5rem;
+        }
+        
+        .mr-1 {
+            margin-right: 0.25rem;
+        }
+        
+        .mr-2 {
+            margin-right: 0.5rem;
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        .items-center {
+            align-items: center;
+        }
+        
+        .text-gray-700 {
+            color: #374151;
+        }
+
+        /* Responsive additions */
+        @media (max-width: 1024px) {
+            .slide-container {
+                width: 100%;
+                height: auto;
+                min-height: 700px;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -257,7 +393,7 @@
             </div>
             
             <div class="main-content">
-                <h2 class="text-2xl font-semibold mb-4 text-blue-800" style="border-bottom: 2px solid #d4af37; padding-bottom: 0.5rem;">
+                <h2 class="text-2xl font-semibold mb-3 text-blue-800" style="border-bottom: 2px solid #d4af37; padding-bottom: 0.3rem;">
                     <i class="fas fa-shield-alt mr-2 gold-accent"></i>
                     Đảm bảo chất lượng trong Agile
                 </h2>
@@ -272,65 +408,107 @@
                             <h3 class="section-title">Kiểm thử liên tục</h3>
                         </div>
                         
-                        <div class="quality-items">
-                            <div class="quality-item">
-                                <i class="fas fa-cube item-icon text-blue-500"></i>
-                                <div>
-                                    <p class="font-medium">Unit Testing</p>
-                                    <p class="text-xs text-gray-500">Jest, JUnit</p>
+                        <div class="quality-items1">
+                            <div class="quality-item1">
+                                <div class="item-icon text-blue-500">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                                <div class="test-result-content">
+                                    <p class="font-medium">API Testing</p>
+                                    <p class="text-xs text-gray-500">Postman, Swagger</p>
+                                    <p class="text-xs text-gray-500">Test trực tiếp với API đã deploy</p>
                                 </div>
                             </div>
-                            <div class="quality-item">
-                                <i class="fas fa-plug item-icon text-blue-500"></i>
-                                <div>
-                                    <p class="font-medium">Integration Testing</p>
-                                    <p class="text-xs text-gray-500">Postman, RestAssured</p>
+                            <div class="quality-item1">
+                                <div class="item-icon text-blue-500">
+                                    <i class="fas fa-desktop"></i>
                                 </div>
-                            </div>
-                            <div class="quality-item">
-                                <i class="fas fa-desktop item-icon text-blue-500"></i>
-                                <div>
+                                <div class="test-result-content">
                                     <p class="font-medium">UI Testing</p>
-                                    <p class="text-xs text-gray-500">Selenium, Cypress</p>
+                                    <p class="text-xs text-gray-500">Kiểm thử thủ công trực quan</p>
+                                    <p class="text-xs text-gray-500">Ghi lại toàn bộ nội dung test case trong Google Sheet</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- CI/CD Section -->
-                    <div class="quality-section cicd-section">
-                        <div class="section-header">
-                            <div class="section-icon icon-cicd">
-                                <i class="fas fa-sync-alt"></i>
+                    <!-- Test Case Results Section -->
+                   <div class="quality-section result-section">
+                    <div class="section-header">
+                        <div class="section-icon icon-results">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3 class="section-title">Kết quả Test Case</h3>
+                    </div>
+                    
+                    <div class="quality-items">
+                        <div class="quality-item">
+                            <div class="item-icon text-purple-500">
+                                <i class="fas fa-cube"></i>
                             </div>
-                            <h3 class="section-title">Tích hợp liên tục (CI/CD)</h3>
+                            <div class="test-result-content">
+                                <p class="test-result-title">API Testing</p>
+                                
+                                <div class="mt-2">
+                                    <p class="text-xs font-medium text-gray-700">Lần 1:</p>
+                                    <div class="test-result-stats">
+                                        <span class="test-stat stat-total"><i class="fas fa-clipboard-list mr-1"></i> 91 test cases</span>
+                                        <span class="test-stat stat-pass"><i class="fas fa-check-circle mr-1"></i> 54 passed</span>
+                                        <span class="test-stat stat-fail"><i class="fas fa-times-circle mr-1"></i> 37 failed</span>
+                                    </div>
+                                    <div class="test-progress">
+                                        <div class="progress-bar progress-pass" style="width: 59%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <p class="text-xs font-medium text-gray-700">Lần 2:</p>
+                                    <div class="test-result-stats">
+                                        <span class="test-stat stat-total"><i class="fas fa-clipboard-list mr-1"></i> 37 test cases</span>
+                                        <span class="test-stat stat-pass"><i class="fas fa-check-circle mr-1"></i> 35 passed</span>
+                                        <span class="test-stat stat-fail"><i class="fas fa-times-circle mr-1"></i> 2 failed</span>
+                                    </div>
+                                    <div class="test-progress">
+                                        <div class="progress-bar progress-pass" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="quality-items">
-                            <div class="quality-item">
-                                <i class="fab fa-github item-icon text-green-500"></i>
-                                <div>
-                                    <p class="font-medium">GitHub Actions</p>
-                                    <p class="text-xs text-gray-500">Tự động hóa quy trình</p>
-                                </div>
+                        <div class="quality-item">
+                            <div class="item-icon text-purple-500">
+                                <i class="fas fa-desktop"></i>
                             </div>
-                            <div class="quality-item">
-                                <i class="fas fa-robot item-icon text-green-500"></i>
-                                <div>
-                                    <p class="font-medium">Kiểm tra tự động</p>
-                                    <p class="text-xs text-gray-500">Chạy test mỗi khi commit</p>
+                            <div class="test-result-content">
+                                <p class="test-result-title">UI Testing</p>
+                                
+                                <div class="mt-2">
+                                    <p class="text-xs font-medium text-gray-700">Lần 1:</p>
+                                    <div class="test-result-stats">
+                                        <span class="test-stat stat-total"><i class="fas fa-clipboard-list mr-1"></i> 258 test cases</span>
+                                        <span class="test-stat stat-pass"><i class="fas fa-check-circle mr-1"></i> 222 passed</span>
+                                        <span class="test-stat stat-fail"><i class="fas fa-times-circle mr-1"></i> 36 failed</span>
+                                    </div>
+                                    <div class="test-progress">
+                                        <div class="progress-bar progress-pass" style="width: 86%"></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="quality-item">
-                                <i class="fas fa-upload item-icon text-green-500"></i>
-                                <div>
-                                    <p class="font-medium">Triển khai tự động</p>
-                                    <p class="text-xs text-gray-500">Cập nhật liên tục</p>
+                                
+                                <div class="mt-2">
+                                    <p class="text-xs font-medium text-gray-700">Lần 2:</p>
+                                    <div class="test-result-stats">
+                                        <span class="test-stat stat-total"><i class="fas fa-clipboard-list mr-1"></i> 36 test cases</span>
+                                        <span class="test-stat stat-pass"><i class="fas fa-check-circle mr-1"></i> 33 passed</span>
+                                        <span class="test-stat stat-fail"><i class="fas fa-times-circle mr-1"></i> 3 failed</span>
+                                    </div>
+                                    <div class="test-progress">
+                                        <div class="progress-bar progress-pass" style="width: 92%"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+                </div>
                     <!-- Code Quality Section -->
                     <div class="quality-section code-quality-section">
                         <div class="section-header">
@@ -351,8 +529,8 @@
                             <div class="quality-item">
                                 <i class="fas fa-microscope item-icon text-yellow-600"></i>
                                 <div>
-                                    <p class="font-medium">SonarQube</p>
-                                    <p class="text-xs text-gray-500">Phân tích mã nguồn</p>
+                                    <p class="font-medium">Pair Programming</p>
+                                    <p class="text-xs text-gray-500">Lập trình đôi để phát hiện lỗi sớm</p>
                                 </div>
                             </div>
                             <div class="quality-item">
@@ -364,7 +542,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Metrics Section -->
                     <div class="quality-section metrics-section">
                         <div class="section-header">
@@ -416,14 +594,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Metrics Chart -->
-                <div class="mt-6 bg-gray-50 p-4 rounded-lg shadow-sm">
-                    <h3 class="text-lg font-semibold text-blue-800 mb-2">Các chỉ số đo lường chất lượng</h3>
-                    <div class="chart-container">
-                        <canvas id="metricsChart"></canvas>
-                    </div>
-                </div>
             </div>
             
             <div class="hotel-logo">
@@ -433,99 +603,5 @@
             <div class="page-number">9/16</div>
         </div>
     </div>
-    
-    <script>
-        // Initialize metrics chart
-        document.addEventListener('DOMContentLoaded', function() {
-            const ctx = document.getElementById('metricsChart').getContext('2d');
-            
-            // Chart configuration
-            const metricsChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Sprint 1', 'Sprint 2', 'Sprint 3', 'Sprint 4'],
-                    datasets: [
-                        {
-                            label: 'Độ bao phủ kiểm thử (%)',
-                            data: [75, 79, 83, 87],
-                            backgroundColor: 'rgba(59, 130, 246, 0.6)',
-                            borderColor: 'rgba(59, 130, 246, 1)',
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Bug Density (bug/KLOC × 10)',
-                            data: [1.2, 0.9, 0.7, 0.5],
-                            backgroundColor: 'rgba(239, 68, 68, 0.6)',
-                            borderColor: 'rgba(239, 68, 68, 1)',
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Thời gian phản hồi (s)',
-                            data: [2.3, 1.9, 1.6, 1.3],
-                            backgroundColor: 'rgba(212, 175, 55, 0.6)',
-                            borderColor: 'rgba(212, 175, 55, 1)',
-                            borderWidth: 1
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                            labels: {
-                                boxWidth: 12,
-                                padding: 10,
-                                font: {
-                                    family: 'Montserrat'
-                                }
-                            }
-                        },
-                        tooltip: {
-                            backgroundColor: 'rgba(30, 58, 138, 0.8)',
-                            titleFont: {
-                                family: 'Montserrat',
-                                size: 14
-                            },
-                            bodyFont: {
-                                family: 'Montserrat',
-                                size: 13
-                            },
-                            padding: 10
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: {
-                                font: {
-                                    family: 'Montserrat'
-                                }
-                            },
-                            grid: {
-                                color: 'rgba(226, 232, 240, 0.6)'
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                font: {
-                                    family: 'Montserrat'
-                                }
-                            },
-                            grid: {
-                                display: false
-                            }
-                        }
-                    },
-                    animation: {
-                        duration: 2000,
-                        easing: 'easeOutQuart'
-                    }
-                }
-            });
-        });
-    </script>
 </body>
 </html>
