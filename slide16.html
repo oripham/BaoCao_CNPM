@@ -71,23 +71,23 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
             animation: slideUp 1s forwards;
             animation-delay: 0.5s;
             opacity: 0;
         }
         .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+            display: flex;
+            flex-direction: column;
             width: 100%;
             margin-top: 1.5rem;
+            gap: 1rem;
         }
         .contact-item {
             display: flex;
             align-items: center;
-            padding: 1rem;
+            padding: 1rem 1.5rem;
             background-color: #f8fafc;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -110,47 +110,24 @@
             border-radius: 50%;
             background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             color: white;
-            margin-right: 1rem;
+            margin-right: 1.5rem;
             flex-shrink: 0;
         }
-        .qr-section {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-            animation-delay: 1.2s;
-        }
-        .qr-item {
-            display: flex;
-            flex-direction: column;
+        .contact-content {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            width: 100%;
             align-items: center;
-            margin: 0 1.5rem;
-            background-color: white;
-            padding: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
         }
-        .qr-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
-        .qr-placeholder {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #e2e8f0, #f8fafc);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 0.5rem;
-            border: 1px dashed #cbd5e1;
-        }
-        .qr-label {
+        .contact-label {
             font-weight: 500;
             color: #1e3a8a;
-            margin-top: 0.5rem;
+        }
+        .contact-value {
+            color: #3b82f6;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .decorative-element {
             position: absolute;
@@ -200,9 +177,6 @@
         }
         .contact-3 {
             animation-delay: 0.9s;
-        }
-        .contact-4 {
-            animation-delay: 1s;
         }
         .confetti-canvas {
             position: fixed;
@@ -285,11 +259,11 @@
                         <i class="fas fa-heart text-red-500 mr-2" style="animation: pulse 1.5s infinite;"></i>
                         Cảm ơn sự theo dõi
                     </h2>
-                    <p class="text-xl text-gray-600">của quý Cô và các bạn!</p>
+                    <p class="text-xl text-gray-600">của Cô và các bạn!</p>
                 </div>
                 
                 <div class="contact-section">
-                    <h3 class="text-xl font-semibold text-blue-800 flex items-center">
+                    <h3 class="text-xl font-semibold text-blue-800 flex items-center mb-4">
                         <i class="fas fa-address-card gold-accent mr-2"></i>
                         Thông tin liên hệ nhóm
                     </h3>
@@ -299,9 +273,9 @@
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div>
-                                <div class="font-medium">Email: Nhóm trưởng</div>
-                                <div class="text-blue-600">6351071055@st.utc2.edu.vn</div>
+                            <div class="contact-content">
+                                <div class="contact-label">Email: Nhóm trưởng</div>
+                                <div class="contact-value">6351071055@st.utc2.edu.vn</div>
                             </div>
                         </div>
                         
@@ -309,9 +283,9 @@
                             <div class="contact-icon">
                                 <i class="fab fa-github"></i>
                             </div>
-                            <div>
-                                <div class="font-medium">GitHub</div>
-                                <div class="text-blue-600">github.com/hms-project</div>
+                            <div class="contact-content">
+                                <div class="contact-label">GitHub: API</div>
+                                <div class="contact-value">github.com/BAO10022004/API_QLKHACHSAN.git</div>
                             </div>
                         </div>
                         
@@ -319,51 +293,16 @@
                             <div class="contact-icon">
                                 <i class="fas fa-globe"></i>
                             </div>
-                            <div>
-                                <div class="font-medium">Demo</div>
-                                <div class="text-blue-600">demo-hms.example.com</div>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item contact-4">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div>
-                                <div class="font-medium">Hotline</div>
-                                <div class="text-blue-600">(+84) 123 456 789</div>
+                            <div class="contact-content">
+                                <div class="contact-label">GitHub: Website</div>
+                                <div class="contact-value">github.com/dungken/hotel_management.git</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="qr-section">
-                    <div class="qr-item">
-                        <div class="qr-placeholder">
-                            <i class="fas fa-qrcode text-3xl text-gray-400"></i>
-                        </div>
-                        <div class="qr-label">GitHub Repository</div>
-                    </div>
-                    
-                    <div class="qr-item">
-                        <div class="qr-placeholder">
-                            <i class="fas fa-qrcode text-3xl text-gray-400"></i>
-                        </div>
-                        <div class="qr-label">Online Demo</div>
-                    </div>
-                </div>
-                
-                <button class="btn-ask" id="trigger-questions">
-                    <i class="fas fa-question-circle"></i>
-                    Đặt câu hỏi thảo luận
-                </button>
             </div>
             
-            <div class="hotel-logo">
-                <i class="fas fa-hotel gold-accent"></i> <span class="text-blue-800 font-semibold">HMS</span>
-            </div>
-            
-            <div class="page-number">16/16</div>
+  
         </div>
     </div>
     
@@ -381,16 +320,6 @@
                 spread: 160,
                 origin: { y: 0.6 },
                 colors: ['#1e3a8a', '#3b82f6', '#d4af37', '#ffffff']
-            });
-            
-            // Button click event
-            document.getElementById('trigger-questions').addEventListener('click', function() {
-                myConfetti({
-                    particleCount: 200,
-                    spread: 180,
-                    origin: { y: 0.7 },
-                    colors: ['#1e3a8a', '#3b82f6', '#d4af37', '#ffffff']
-                });
             });
             
             // Periodic small bursts every 5 seconds

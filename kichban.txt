@@ -89,14 +89,15 @@ Các User Stories ưu tiên cao bao gồm: US01 - Người quản lý có thể 
 
 Mỗi User Story đều được gán điểm ước lượng độ phức tạp, như bạn thấy trong bảng. Điểm này giúp chúng em lập kế hoạch Sprint hiệu quả hơn.
 
-Tiếp theo, đồng nghiệp Backend của chúng em sẽ trình bày kế hoạch Sprint và phân công công việc."
+Tiếp theo, thành viên đảm nhiệm vị trí Backend của nhóm em sẽ trình bày kế hoạch Sprint và phân công công việc."
 
 ## SLIDE 7: SPRINT PLANNING
 
 **Backend Developer:**
 "Xin chào, em là [Tên], Backend Developer của dự án. em sẽ trình bày về kế hoạch phát triển và phân công công việc trong các Sprint.
 
-Chúng em đã lên kế hoạch cho 4 Sprint, mỗi Sprint kéo dài 2 tuần. Trong Sprint 1, chúng em tập trung vào các chức năng cốt lõi. BA phân tích chi tiết yêu cầu, em thiết lập cơ sở dữ liệu, Frontend Dev xây dựng giao diện quản lý trạng thái phòng, và Tester thiết kế test case.
+Chúng tôi đã lên kế hoạch cho 4 Sprint, mỗi Sprint kéo dài 2 tuần. 
+Trong Sprint 1, chúng tôi tập trung vào các chức năng cốt lõi. BA phân tích chi tiết yêu cầu, tôi thiết lập cơ sở dữ liệu, Frontend Dev xây dựng giao diện quản lý trạng thái phòng, và Tester thiết kế test case.
 
 Sprint 2 tập trung vào quy trình check-in/check-out. BA hoàn thiện quy trình nghiệp vụ, em phát triển API xử lý, Frontend Dev xây dựng giao diện, và Tester kiểm thử các quy trình.
 
@@ -109,17 +110,29 @@ Tiếp theo, em xin mời đồng nghiệp Frontend trình bày về kiến trú
 ## SLIDE 8: KIẾN TRÚC HỆ THỐNG
 
 **Frontend Developer:**
-"Xin chào, em là [Tên], Frontend Developer của dự án. em sẽ giới thiệu về kiến trúc hệ thống mà chúng em đã thiết kế.
+"Như các bạn đã thấy, slide này tập trung vào việc minh họa kiến trúc 3 tầng. Đây là một kiểu kiến trúc phần mềm phân chia ứng dụng thành ba lớp logic riêng biệt, mỗi lớp đảm nhận một vai trò cụ thể. Mục tiêu chính của việc phân tầng này là để tách biệt các mối quan tâm, giúp cho việc phát triển, bảo trì và mở rộng hệ thống trở nên dễ dàng hơn.
+Chúng ta hãy cùng nhau đi sâu vào từng tầng của kiến trúc này:
+  
+  Đầu tiên là Tầng trình bày, hay còn gọi là Frontend. Đây là lớp mà người dùng trực tiếp tương tác. Nó chịu trách nhiệm về giao diện người dùng, hiển thị dữ liệu và thu thập thông tin từ người dùng. Trong ngữ cảnh của một hệ thống quản lý khách sạn (HMS - như logo chúng ta thấy), tầng trình bày có thể bao gồm:
+    Giao diện quản trị: Nơi các quản lý có thể thực hiện các thao tác nghiệp vụ như quản lý đặt phòng, phòng, nhân viên, báo cáo, v.v.
+    Giao diện nhân viên: Dành cho lễ tân, bộ phận buồng phòng, nhà hàng, giúp họ thực hiện các công việc hàng ngày như nhận/trả phòng, quản lý dịch vụ, v.v.
+  => Việc tách biệt tầng trình bày giúp chúng ta dễ dàng thay đổi giao diện người dùng mà không ảnh hưởng đến logic nghiệp vụ bên dưới. Các công nghệ phổ biến ở tầng này bao gồm HTML, CSS, JavaScript và các framework như React, Angular, Vue.js.
+  
+  Tiếp theo là Tầng logic, hay Backend. Đây là "bộ não" của ứng dụng, nơi chứa đựng các quy tắc nghiệp vụ, xử lý dữ liệu và điều phối hoạt động giữa tầng trình bày và tầng dữ liệu. Các thành phần quan trọng ở tầng này thường bao gồm:
+    API RESTful: Cung cấp các điểm cuối (endpoints) để tầng trình bày có thể gửi yêu cầu và nhận dữ liệu một cách chuẩn hóa.
+    Xử lý nghiệp vụ: Thực hiện các logic phức tạp của ứng dụng, ví dụ như tính toán giá phòng, kiểm tra tình trạng phòng trống, xử lý thanh toán, v.v.
+  => Tầng Backend thường được xây dựng bằng ngôn ngữ lập trình C# và các framework tương ứng. Việc tách biệt logic nghiệp vụ giúp hệ thống trở nên mạnh mẽ, bảo mật và dễ dàng mở rộng hơn.
+  
+  Cuối cùng là Tầng dữ liệu, hay Database. Đây là nơi lưu trữ và quản lý toàn bộ dữ liệu của hệ thống một cách an toàn và hiệu quả. Trong ví dụ này, chúng ta có thể sử dụng:
+    SQL Server: Một hệ quản trị cơ sở dữ liệu quan hệ mạnh mẽ, thường được sử dụng cho các ứng dụng doanh nghiệp.
+    Lưu trữ đám mây: Các dịch vụ lưu trữ dữ liệu trên nền tảng đám mây, mang lại tính linh hoạt, khả năng mở rộng và độ tin cậy cao.
+  => Việc tách biệt tầng dữ liệu giúp chúng ta dễ dàng thay đổi hệ quản trị cơ sở dữ liệu hoặc phương pháp lưu trữ mà không ảnh hưởng đến các tầng khác của ứng dụng.
 
-Hệ thống được xây dựng theo kiến trúc 3 tầng. Tầng trình bày (Frontend) bao gồm giao diện web responsive, ứng dụng di động cho iOS và Android, và giao diện quản trị cho admin. Đây là phần em chịu trách nhiệm phát triển, sử dụng các công nghệ hiện đại để đảm bảo trải nghiệm người dùng tốt nhất.
+Để hình dung rõ hơn về sự tương tác giữa các tầng, chúng ta có thể xem sơ đồ này. Các bạn có thể thấy rõ luồng dữ liệu di chuyển từ Giao diện người dùng (Frontend) thông qua Xử lý nghiệp vụ (Backend) để tương tác với Lưu trữ dữ liệu (Database). Các đường kết nối và mũi tên thể hiện rõ ràng sự giao tiếp này.
+  Kiến trúc 3 tầng mang lại nhiều lợi ích quan trọng. Nó giúp tách biệt rõ ràng các chức năng, làm cho mã nguồn dễ quản lý và bảo trì hơn. Nó cũng tạo điều kiện thuận lợi cho việc dễ dàng mở rộng hệ thống khi cần thiết, và đặc biệt phù hợp với phương pháp Agile, cho phép phát triển và triển khai các tính năng một cách linh hoạt và nhanh chóng.
 
-Tầng logic (Backend) do đồng nghiệp Backend phát triển, bao gồm các API RESTful, xử lý nghiệp vụ và quản lý giao dịch. Tầng này đóng vai trò trung gian kết nối giữa giao diện người dùng và dữ liệu.
+=> Tóm lại, kiến trúc 3 tầng là một giải pháp thiết kế hệ thống mạnh mẽ và linh hoạt, đặc biệt phù hợp cho các ứng dụng phức tạp như hệ thống quản lý khách sạn mà chúng em đang nghiên cứu. Nó giúp chúng ta xây dựng các ứng dụng ổn định, dễ bảo trì và có khả năng mở rộng cao.
 
-Tầng dữ liệu sử dụng cơ sở dữ liệu quan hệ PostgreSQL, bộ nhớ đệm Redis để tăng hiệu suất, và lưu trữ đám mây cho các tài nguyên lớn.
-
-Kiến trúc này giúp chúng em phát triển độc lập các thành phần, dễ dàng mở rộng và bảo trì hệ thống về sau.
-
-Tiếp theo, đồng nghiệp Tester sẽ trình bày về quản lý chất lượng trong dự án của chúng em."
 
 ## SLIDE 9: QUẢN LÝ CHẤT LƯỢNG
 
@@ -156,13 +169,13 @@ Tiếp theo, đồng nghiệp Backend sẽ giới thiệu về công cụ và c�
 
 Cho phần Frontend, chúng em sử dụng React.js để xây dựng giao diện động, cùng với Bootstrap cho UI components và Redux để quản lý state.
 
-Về Backend, chúng em chọn Node.js với framework Express.js để xây dựng các RESTful APIs phục vụ cho cả web và mobile app.
+Về Backend, chúng tôi chọn ASP .NET CORE với ENTITY FRAMEWORK để xây dựng các RESTful APIs phục vụ cho web .
 
-Cho cơ sở dữ liệu, chúng em sử dụng PostgreSQL làm database chính, Redis cho cache, và có thể dùng MongoDB cho một số dữ liệu phi cấu trúc.
+Cho cơ sở dữ liệu, chúng tôi sử dụng SQLSERVER  làm database chính.
 
 Về DevOps, chúng em ứng dụng Docker để đóng gói ứng dụng, triển khai trên AWS, và sử dụng GitHub Actions cho CI/CD pipeline.
 
-Để quản lý dự án Agile, chúng em dùng Jira để theo dõi tiến độ, Confluence để lưu trữ tài liệu, và Slack để giao tiếp trong nhóm.
+Để quản lý dự án Agile, chúng tôi dùng Jira để theo dõi tiến độ.
 
 Giờ em xin mời đồng nghiệp Frontend Demo prototype của hệ thống."
 
@@ -171,34 +184,91 @@ Giờ em xin mời đồng nghiệp Frontend Demo prototype của hệ thống."
 **Frontend Developer:**
 "em xin giới thiệu một số giao diện mẫu mà chúng em đã phát triển cho hệ thống quản lý khách sạn.
 
-[Giới thiệu từng màn hình]
+Màn hình 1: Khách hàng (Customers)
 
-Đầu tiên là màn hình chính - Dashboard, cung cấp tổng quan về trạng thái phòng, đặt phòng mới, và các chỉ số quan trọng khác. Giao diện được thiết kế trực quan với màu sắc khác nhau đại diện cho các trạng thái phòng khác nhau.
+  Chức năng thiết yếu:
+    Tạo khách hàng mới (thông tin cơ bản).
+    Xem danh sách khách hàng (tìm kiếm, phân trang).
+    Xem chi tiết khách hàng.
+    Cập nhật thông tin khách hàng (đảm bảo duy nhất email, số điện thoại, CMND).
+    Xóa mềm khách hàng (đánh dấu không hoạt động).
+    Cập nhật điểm trung thành sau đặt phòng.
+    Tìm kiếm khách hàng theo tên, email, số điện thoại hoặc CMND.
 
-Tiếp theo là màn hình đặt phòng, với form thông tin đặt phòng và lịch trực quan giúp nhân viên dễ dàng kiểm tra tình trạng phòng theo ngày.
 
-Cuối cùng là màn hình quản lý, nơi quản lý có thể xem báo cáo doanh thu theo nhiều tiêu chí và quản lý nhân sự trong khách sạn.
+Màn hình 2: Phòng (Rooms)
 
-Tất cả giao diện đều được thiết kế responsive, hoạt động tốt trên cả desktop và thiết bị di động.
+  Chức năng thiết yếu:
+    Thêm phòng mới (số phòng, loại phòng, trạng thái, ghi chú).
+    Xem danh sách phòng (lọc theo loại, trạng thái).
+    Xem chi tiết phòng.
+    Cập nhật trạng thái và ghi chú phòng.
+    Xóa mềm phòng (đánh dấu không hoạt động).
+    Kiểm tra tình trạng phòng trống theo khoảng thời gian.
+    Quản lý loại phòng (tên, số người tối đa, giá gốc...).
+  
+
+Màn hình 3: Đặt phòng (Bookings)
+  
+  Chức năng thiết yếu:
+    Tạo đặt phòng (khách hàng, phòng, kênh đặt, ngày nhận/trả, số người, tổng tiền).
+    Xem danh sách đặt phòng (lọc theo trạng thái, khách hàng, ngày).
+    Xem chi tiết đặt phòng.
+    Cập nhật thông tin đặt phòng (ngày, phòng - kiểm tra trống).
+    Hủy đặt phòng (cập nhật trạng thái, lý do).
+    Duyệt đặt phòng (chuyển trạng thái).
+    Check-in/Check-out (cập nhật trạng thái).
+
+Màn hình 4: Thanh toán (Payments)
+
+  Chức năng thiết yếu:
+    Ghi nhận thanh toán (mã đặt phòng, phương thức, số tiền, trạng thái).
+    Xem danh sách thanh toán (lọc theo mã đặt phòng, trạng thái).
+    Xem chi tiết thanh toán.
+    Cập nhật trạng thái thanh toán.
+    Tạo hóa đơn VAT (thêm thông tin công ty, mã số thuế).
+    Xử lý hoàn tiền (cập nhật trạng thái, ghi chú).
+
+Màn hình 5: Người dùng (Users)
+
+  Chức năng thiết yếu:
+    Đăng nhập/Đăng xuất (xác thực, cấp token).
+    Tạo người dùng mới (tên đăng nhập, email, vai trò).
+    Xem danh sách người dùng (lọc theo vai trò, email).
+    Xem chi tiết người dùng.
+    Cập nhật email, vai trò người dùng.
+    Đổi mật khẩu.
+    Phân quyền vai trò.
+    Xóa mềm người dùng (đánh dấu không hoạt động).
+
+Màn hình 6: Bảng điều khiển (Dashboard)
+
+  Chức năng thiết yếu:
+    Thống kê doanh thu.
+    Thống kê khách hàng.
+    Công suất phòng.
+    Số lượng đặt phòng đang hoạt động.
+    Biểu đồ doanh thu theo thời gian.
+    Báo cáo trạng thái phòng.
+
 
 Tiếp theo, PM sẽ chia sẻ về kết quả Sprint đầu tiên của chúng em."
 
 ## SLIDE 13: KẾT QUẢ SPRINT ĐẦU TIÊN
 
 **Product Manager (PM):**
-"Sau 2 tuần Sprint đầu tiên, chúng em đã đạt được một số kết quả quan trọng.
+"Sau 4 tuần trải qua 3 sprint, chúng em đã đạt được một số kết quả quan trọng.
 
 BA đã hoàn tất phân tích chi tiết các user story ưu tiên cao, tạo nền tảng vững chắc cho quá trình phát triển.
 
-Backend Developer đã thiết lập cấu trúc dữ liệu và phát triển API cơ bản cho việc đặt phòng, là nền tảng để xây dựng các tính năng khác.
+Backend Developer đã thiết lập cấu trúc dữ liệu và phát triển API cơ bản cho việc đăng nhập, đăng ký, đặt phòng là nền tảng để xây dựng các tính năng khác.
 
 Frontend Developer đã hoàn thành giao diện quản lý trạng thái phòng với thiết kế trực quan, giúp nhân viên dễ dàng nắm bắt tình hình phòng.
 
 Tester đã chuẩn bị đầy đủ test case cho các tính năng cốt lõi, đảm bảo quá trình kiểm thử được thực hiện đầy đủ.
 
-Chúng em đang tiến hành các công việc tiếp theo như tích hợp hệ thống thanh toán, hoàn thiện giao diện người dùng và chuẩn bị cho Sprint 2.
+Chúng em đang tiến hành các công việc tiếp theo như tích hợp hệ thống thanh toán, hoàn thiện giao diện người dùng và chuẩn bị cho Sprint tiếp theo.
 
-Về metrics, chúng em đạt velocity 35 story points, burndown chart đáp ứng kỳ vọng, và đạt 95% test coverage cho các tính năng đã phát triển.
 
 Giờ em xin mời Tester chia sẻ về bài học kinh nghiệm từ Sprint đầu tiên."
 
@@ -229,10 +299,10 @@ Xin cảm ơn quý Thầy/Cô và các bạn đã lắng nghe. Giờ chúng em x
 ## SLIDE 16: CÂU HỎI & THẢO LUẬN
 
 **Product Manager (PM):**
-"Chúng em xin chân thành cảm ơn quý Thầy/Cô và các bạn đã theo dõi bài thuyết trình của nhóm. Giờ đây, chúng em rất hân hạnh được lắng nghe các câu hỏi và góp ý từ quý vị.
+"Chúng em xin chân thành cảm ơn Cô và các bạn đã theo dõi bài thuyết trình của nhóm. Giờ đây, chúng em rất hân hạnh được lắng nghe các câu hỏi và góp ý từ quý vị.
 
-Thông tin liên hệ của nhóm chúng em được hiển thị trên slide. Nếu sau buổi thuyết trình, quý vị có thêm câu hỏi hoặc đề xuất, vui lòng liên hệ với chúng em qua email hoặc GitHub. Chúng em cũng có đường link demo cho phiên bản hiện tại của hệ thống.
+Thông tin liên hệ của nhóm chúng em được hiển thị trên slide. Nếu sau buổi thuyết trình, quý vị có thêm câu hỏi hoặc đề xuất, vui lòng liên hệ với chúng em qua email hoặc GitHub.
 
-Một lần nữa, cảm ơn quý vị đã dành thời gian lắng nghe bài thuyết trình của chúng em."
+Một lần nữa, cảm ơn mọi người đã dành thời gian lắng nghe bài thuyết trình của chúng em."
 
 [Phần này dành cho cả nhóm trả lời câu hỏi từ người nghe]
